@@ -48,7 +48,5 @@ public class ItemSerializer extends StdSerializer<Item>
 
         String s = mapper.writeValueAsString(myItem);
         System.out.println(s);
-
-
     }
 }

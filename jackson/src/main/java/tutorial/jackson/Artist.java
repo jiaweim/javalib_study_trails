@@ -1,6 +1,5 @@
 package tutorial.jackson;
 
-import org.eclipse.rdf4j.query.algebra.Str;
 
 import java.util.Date;
 

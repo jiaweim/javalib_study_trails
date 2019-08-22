@@ -34,7 +34,7 @@ public class ExtendableBean
     }
 
 
-    @JsonAnyGetter
+    @JsonAnyGetter(enabled = false)
     public Map<String, String> getProperties()
     {
         return properties;
