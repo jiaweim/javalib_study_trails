@@ -13,10 +13,8 @@ import java.io.IOException;
  * @version 1.0.0
  * @since 15 May 2018, 2:25 PM
  */
-public class FilevsInputStream
-{
-    public static void main(String[] args) throws IOException, InvalidFormatException
-    {
+public class FilevsInputStream {
+    public static void main(String[] args) throws IOException, InvalidFormatException {
         // Use a file
         Workbook wb = WorkbookFactory.create(new File("MyExcel.xls"));
 
