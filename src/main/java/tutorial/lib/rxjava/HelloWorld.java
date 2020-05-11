@@ -1,10 +1,9 @@
 package tutorial.lib.rxjava;
 
 import io.reactivex.Observable;
-import io.reactivex.functions.Consumer;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author JiaweiMao on 2017.09.21

@@ -2,23 +2,25 @@ package tutorial.lib.fastutil;
 
 
 import it.unimi.dsi.fastutil.floats.FloatArrays;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class FloatArraysTest {
-
-    private static float[] identity(int n) {
+public class FloatArraysTest
+{
+    private static float[] identity(int n)
+    {
         final float[] a = new float[n];
         while (n-- != 0) a[n] = n;
         return a;
     }
 
     @Test
-    public void testRadixSort1() {
+    public void testRadixSort1()
+    {
         float[] t = {2, 1, 0, 4};
         FloatArrays.radixSort(t);
         for (int i = t.length - 1; i-- != 0; ) assertTrue(t[i] <= t[i + 1]);
@@ -51,7 +53,8 @@ public class FloatArraysTest {
     }
 
     @Test
-    public void testRadixSort2() {
+    public void testRadixSort2()
+    {
         float[][] d = new float[2][];
 
         d[0] = new float[10];
@@ -97,7 +100,8 @@ public class FloatArraysTest {
     }
 
     @Test
-    public void testRadixSort() {
+    public void testRadixSort()
+    {
         float[][] t = {{2, 1, 0, 4}};
         FloatArrays.radixSort(t);
         for (int i = t[0].length - 1; i-- != 0; ) assertTrue(t[0][i] <= t[0][i + 1]);
@@ -154,7 +158,8 @@ public class FloatArraysTest {
 
 
     @Test
-    void testMergeSortNaNs() {
+    void testMergeSortNaNs()
+    {
         final float[] t = {Float.NaN, 1, 5, 2, 1, 0, 9, 1, Float.NaN, 2, 4, 6, 8, 9, 10, 12, 1, 7};
         for (int to = 1; to < t.length; to++)
             for (int from = 0; from < to; from++) {
@@ -167,7 +172,8 @@ public class FloatArraysTest {
 
 
     @Test
-    void testRadixSortNaNs() {
+    void testRadixSortNaNs()
+    {
         final float[] t = {Float.NaN, 1, 5, 2, 1, 0, 9, 1, Float.NaN, 2, 4, 6, 8, 9, 10, 12, 1, 7};
         for (int to = 1; to < t.length; to++)
             for (int from = 0; from < to; from++) {
@@ -179,7 +185,8 @@ public class FloatArraysTest {
     }
 
     @Test
-    void testRadixSortIndirectNaNs() {
+    void testRadixSortIndirectNaNs()
+    {
         final float[] t = {Float.NaN, 1, 5, 2, 1, 0, 9, 1, Float.NaN, 2, 4, 6, 8, 9, 10, 12, 1, 7};
         for (int to = 1; to < t.length; to++)
             for (int from = 0; from < to; from++) {
@@ -192,7 +199,8 @@ public class FloatArraysTest {
     }
 
     @Test
-    public void testRadixSortIndirect2NaNs() {
+    public void testRadixSortIndirect2NaNs()
+    {
         final float[] t = {Float.NaN, 1, 5, 2, 1, 0, 9, 1, Float.NaN, 2, 4, 6, 8, 9, 10, 12, 1, 7};
         for (int to = 1; to < t.length; to++)
             for (int from = 0; from < to; from++) {
@@ -206,7 +214,8 @@ public class FloatArraysTest {
 
 
     @Test
-    public void testQuickSortNaNs() {
+    public void testQuickSortNaNs()
+    {
         final float[] t = {Float.NaN, 1, 5, 2, 1, 0, 9, 1, Float.NaN, 2, 4, 6, 8, 9, 10, 12, 1, 7};
         for (int to = 1; to < t.length; to++)
             for (int from = 0; from < to; from++) {

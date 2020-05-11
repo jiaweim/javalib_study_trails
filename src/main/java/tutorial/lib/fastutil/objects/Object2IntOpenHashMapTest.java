@@ -2,18 +2,18 @@ package tutorial.lib.fastutil.objects;
 
 import it.unimi.dsi.fastutil.Hash;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Map;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class Object2IntOpenHashMapTest
 {
-
     @Test
     void test()
     {
@@ -21,7 +21,6 @@ public class Object2IntOpenHashMapTest
         map.put("1", 1);
         map.put("2", 2);
         map.put("3", 3);
-
 
     }
 
@@ -63,40 +62,40 @@ public class Object2IntOpenHashMapTest
             assertTrue(valEquals(e.getValue(), m.getInt(e.getKey())));
         }
 
-		/* Now we check that m actually holds that data, but iterating on m. */
+        /* Now we check that m actually holds that data, but iterating on m. */
         for (Object o1 : m.entrySet()) {
             Map.Entry e = (Map.Entry) o1;
             assertTrue(valEquals(e.getValue(), t.get(e.getKey())));
         }
 
-		/* Now we check that m actually holds the same keys. */
+        /* Now we check that m actually holds the same keys. */
         for (Object o : t.keySet()) {
             assertTrue(m.containsKey(o));
             assertTrue(m.keySet().contains(o));
         }
 
-		/* Now we check that m actually holds the same keys, but iterating on m. */
+        /* Now we check that m actually holds the same keys, but iterating on m. */
         for (Object o : m.keySet()) {
             assertTrue(t.containsKey(o));
             assertTrue(t.keySet().contains(o));
         }
 
-		/* Now we check that m actually hold the same values. */
+        /* Now we check that m actually hold the same values. */
         for (Object o : t.values()) {
             assertTrue(m.containsValue(o));
             assertTrue(m.values().contains(o));
         }
 
-		/* Now we check that m actually hold the same values, but iterating on m. */
+        /* Now we check that m actually hold the same values, but iterating on m. */
         for (Integer o : m.values()) {
             assertTrue(t.containsValue(o));
             assertTrue(t.values().contains(o));
         }
 
-		/*
+        /*
          * Now we check that inquiries about random data give the same answer in m and t. For m we
-		 * use the polymorphic method.
-		 */
+         * use the polymorphic method.
+         */
         for (int i = 0; i < n; i++) {
             Object T = genKey();
             assertFalse(m.containsKey((T)) != t.containsKey((T)));
@@ -104,16 +103,16 @@ public class Object2IntOpenHashMapTest
                     != 0) || t.get(T) != null && !(Integer.valueOf(m.getInt(T))).equals(t.get(T)));
         }
 
-		/*
-		 * Again, we check that inquiries about random data give the same answer in m and t, but for
-		 * m we use the standard method.
-		 */
+        /*
+         * Again, we check that inquiries about random data give the same answer in m and t, but for
+         * m we use the standard method.
+         */
         for (int i = 0; i < n; i++) {
             Object T = genKey();
             assertTrue(valEquals(m.get((T)), t.get((T))));
         }
 
-		/* Now we put and remove random data in m and t, checking that the result is the same. */
+        /* Now we put and remove random data in m and t, checking that the result is the same. */
         for (int i = 0; i < 20 * n; i++) {
             Object T = genKey();
             int U = genValue();
@@ -124,44 +123,44 @@ public class Object2IntOpenHashMapTest
         assertTrue(m.equals(t));
         assertTrue(t.equals(m));
 
-		/* Now we check that m actually holds the same data. */
+        /* Now we check that m actually holds the same data. */
         for (Object o1 : t.entrySet()) {
             Map.Entry e = (Map.Entry) o1;
             assertTrue(valEquals(e.getValue(), m.get(e.getKey())));
         }
 
-		/* Now we check that m actually holds that data, but iterating on m. */
+        /* Now we check that m actually holds that data, but iterating on m. */
         for (Object o1 : m.entrySet()) {
             Map.Entry e = (Map.Entry) o1;
             assertTrue(valEquals(e.getValue(), t.get(e.getKey())));
         }
 
-		/* Now we check that m actually holds the same keys. */
+        /* Now we check that m actually holds the same keys. */
         for (Object o : t.keySet()) {
             assertTrue(m.containsKey(o));
             assertTrue(m.keySet().contains(o));
         }
 
-		/* Now we check that m actually holds the same keys, but iterating on m. */
+        /* Now we check that m actually holds the same keys, but iterating on m. */
         for (Object o : m.keySet()) {
             assertTrue(t.containsKey(o));
             assertTrue(t.keySet().contains(o));
         }
 
-		/* Now we check that m actually hold the same values. */
+        /* Now we check that m actually hold the same values. */
         for (Object o : t.values()) {
             assertTrue(m.containsValue(o));
             assertTrue(m.values().contains(o));
         }
 
-		/* Now we check that m actually hold the same values, but iterating on m. */
+        /* Now we check that m actually hold the same values, but iterating on m. */
         for (Integer o : m.values()) {
             assertTrue(t.containsValue(o));
             assertTrue(t.values().contains(o));
         }
         int h = m.hashCode();
 
-		/* Now we save and read m. */
+        /* Now we save and read m. */
         java.io.File ff = new java.io.File("it.unimi.dsi.fastutil.test");
         java.io.OutputStream os = new java.io.FileOutputStream(ff);
         java.io.ObjectOutputStream oos = new java.io.ObjectOutputStream(os);
@@ -174,12 +173,12 @@ public class Object2IntOpenHashMapTest
         ff.delete();
         assertTrue(m.hashCode() == h);
 
-		/* Now we check that m actually holds that data. */
+        /* Now we check that m actually holds that data. */
         for (Object o : t.keySet()) {
             assertTrue(valEquals(m.get(o), t.get(o)));
         }
 
-		/* Now we put and remove random data in m and t, checking that the result is the same. */
+        /* Now we put and remove random data in m and t, checking that the result is the same. */
         for (int i = 0; i < 20 * n; i++) {
             Object T = genKey();
             int U = genValue();
@@ -189,7 +188,7 @@ public class Object2IntOpenHashMapTest
         }
         assertTrue(m.equals(t));
         assertTrue(t.equals(m));
-		/* Now we take out of m everything, and check that it is empty. */
+        /* Now we take out of m everything, and check that it is empty. */
         for (Object o : t.keySet()) m.remove(o);
         assertTrue(m.isEmpty());
     }
@@ -218,7 +217,8 @@ public class Object2IntOpenHashMapTest
         test(100, Hash.VERY_FAST_LOAD_FACTOR);
     }
 
-    @Test(enabled = false, description = "Too long")
+    @Test
+    @Disabled(value = "Too long")
     void test1000() throws IOException, ClassNotFoundException
     {
         test(1000, Hash.DEFAULT_LOAD_FACTOR);

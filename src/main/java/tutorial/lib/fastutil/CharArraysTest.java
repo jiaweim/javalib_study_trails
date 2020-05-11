@@ -1,16 +1,16 @@
 package tutorial.lib.fastutil;
 
 import it.unimi.dsi.fastutil.chars.CharArrays;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
-public class CharArraysTest {
-
-    private static char[] castIdentity(int n) {
+public class CharArraysTest
+{
+    private static char[] castIdentity(int n)
+    {
         final char[] a = new char[n];
         while (n-- != 0) a[n] = (char) n;
         return a;
@@ -18,7 +18,8 @@ public class CharArraysTest {
 
 
     @Test
-    public void testRadixSort1() {
+    public void testRadixSort1()
+    {
         char[] t = {2, 1, 0, 4};
         CharArrays.radixSort(t);
         for (int i = t.length - 1; i-- != 0; ) assertTrue(t[i] <= t[i + 1]);
@@ -51,7 +52,8 @@ public class CharArraysTest {
     }
 
     @Test
-    public void testRadixSort2() {
+    public void testRadixSort2()
+    {
         char[][] d = new char[2][];
 
         d[0] = new char[10];
@@ -59,7 +61,7 @@ public class CharArraysTest {
         d[1] = CharArrays.shuffle(castIdentity(10), new Random(0));
         CharArrays.radixSort(d[0], d[1]);
         for (int i = d[0].length - 1; i-- != 0; )
-            assertTrue( d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
+            assertTrue(d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
 
         d[0] = new char[100000];
         for (int i = d[0].length; i-- != 0; ) d[0][i] = (char) (100 - i % 100);
@@ -75,7 +77,7 @@ public class CharArraysTest {
         for (int i = d.length; i-- != 0; ) d[1][i] = (char) random.nextInt();
         CharArrays.radixSort(d[0], d[1]);
         for (int i = d[0].length - 1; i-- != 0; )
-            assertTrue( d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
+            assertTrue(d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
 
         d[0] = new char[100000];
         random = new Random(0);
@@ -93,11 +95,12 @@ public class CharArraysTest {
         for (int i = d.length; i-- != 0; ) d[1][i] = (char) random.nextInt();
         CharArrays.radixSort(d[0], d[1]);
         for (int i = d[0].length - 1; i-- != 0; )
-            assertTrue( d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
+            assertTrue(d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
     }
 
     @Test
-    public void testRadixSort() {
+    public void testRadixSort()
+    {
         char[][] t = {{2, 1, 0, 4}};
         CharArrays.radixSort(t);
         for (int i = t[0].length - 1; i-- != 0; ) assertTrue(t[0][i] <= t[0][i + 1]);
@@ -113,7 +116,7 @@ public class CharArraysTest {
         d[1] = CharArrays.shuffle(castIdentity(10), new Random(0));
         CharArrays.radixSort(d);
         for (int i = d[0].length - 1; i-- != 0; )
-            assertTrue( d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
+            assertTrue(d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
 
 
         d[0] = new char[100000];
@@ -130,7 +133,7 @@ public class CharArraysTest {
         for (int i = d.length; i-- != 0; ) d[1][i] = (char) random.nextInt();
         CharArrays.radixSort(d);
         for (int i = d[0].length - 1; i-- != 0; )
-            assertTrue( d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
+            assertTrue(d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
 
 
         d[0] = new char[100000];
@@ -140,7 +143,7 @@ public class CharArraysTest {
         for (int i = d.length; i-- != 0; ) d[1][i] = (char) random.nextInt();
         CharArrays.radixSort(d);
         for (int i = d[0].length - 1; i-- != 0; )
-            assertTrue( d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
+            assertTrue(d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
 
         d[0] = new char[10000000];
         random = new Random(0);

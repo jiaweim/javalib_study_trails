@@ -2,12 +2,13 @@ package tutorial.lib.fastutil.ints;
 
 import it.unimi.dsi.fastutil.Hash;
 import it.unimi.dsi.fastutil.ints.*;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;
 
-import static org.testng.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @SuppressWarnings("rawtypes")
@@ -17,7 +18,6 @@ public class IntLinkedOpenHashSetTest
     @Test
     public void testStrangeRetainAllCase()
     {
-
         IntArrayList initialElements = IntArrayList.wrap(new int[]{586, 940,
                 1086, 1110, 1168, 1184, 1185, 1191, 1196, 1229, 1237, 1241,
                 1277, 1282, 1284, 1299, 1308, 1309, 1310, 1314, 1328, 1360,
@@ -266,7 +266,8 @@ public class IntLinkedOpenHashSetTest
         test(100, Hash.VERY_FAST_LOAD_FACTOR);
     }
 
-    @Test(enabled = false, description = "Too long")
+    @Test
+    @Disabled(value = "Too long")
     public void test1000() throws IOException, ClassNotFoundException
     {
         test(1000, Hash.DEFAULT_LOAD_FACTOR);

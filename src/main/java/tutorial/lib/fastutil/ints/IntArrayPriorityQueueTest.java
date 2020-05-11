@@ -5,19 +5,21 @@ import it.unimi.dsi.fastutil.ints.IntArrayPriorityQueue;
 import it.unimi.dsi.fastutil.ints.IntComparators;
 import it.unimi.dsi.fastutil.ints.IntHeapPriorityQueue;
 import it.unimi.dsi.fastutil.io.BinIO;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @SuppressWarnings("deprecation")
-public class IntArrayPriorityQueueTest {
+public class IntArrayPriorityQueueTest
+{
 
     @Test
-    void testEnqueueDequeue() {
+    void testEnqueueDequeue()
+    {
         IntArrayPriorityQueue q = new IntArrayPriorityQueue();
         IntHeapPriorityQueue h = new IntHeapPriorityQueue();
         for (int i = 0; i < 100; i++) {
@@ -54,7 +56,8 @@ public class IntArrayPriorityQueueTest {
 
 
     @Test
-    void testEnqueueDequeueComp() {
+    void testEnqueueDequeueComp()
+    {
         IntArrayPriorityQueue q = new IntArrayPriorityQueue(IntComparators.OPPOSITE_COMPARATOR);
         IntHeapPriorityQueue h = new IntHeapPriorityQueue(IntComparators.OPPOSITE_COMPARATOR);
         for (int i = 0; i < 100; i++) {
@@ -90,7 +93,8 @@ public class IntArrayPriorityQueueTest {
     }
 
     @Test
-    void testMix() {
+    void testMix()
+    {
         IntArrayPriorityQueue q = new IntArrayPriorityQueue();
         IntHeapPriorityQueue h = new IntHeapPriorityQueue();
         for (int i = 0; i < 200; i++) {
@@ -124,7 +128,8 @@ public class IntArrayPriorityQueueTest {
     }
 
     @Test
-    void testMixComp() {
+    void testMixComp()
+    {
         IntArrayPriorityQueue q = new IntArrayPriorityQueue(IntComparators.OPPOSITE_COMPARATOR);
         IntHeapPriorityQueue h = new IntHeapPriorityQueue(IntComparators.OPPOSITE_COMPARATOR);
         for (int i = 0; i < 200; i++) {
@@ -158,7 +163,8 @@ public class IntArrayPriorityQueueTest {
     }
 
     @Test
-    void testSerialize() throws IOException, ClassNotFoundException {
+    void testSerialize() throws IOException, ClassNotFoundException
+    {
         IntArrayPriorityQueue q = new IntArrayPriorityQueue();
         for (int i = 0; i < 100; i++) q.enqueue(i);
 

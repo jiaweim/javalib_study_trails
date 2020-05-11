@@ -2,28 +2,32 @@ package tutorial.lib.fastutil.ints;
 
 import it.unimi.dsi.fastutil.ints.IntHash;
 import it.unimi.dsi.fastutil.ints.IntOpenCustomHashSet;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Not a particularly good test, but it will check that we use everywhere the same hashing strategy.
  */
-public class IntOpenCustomHashSetTest {
+public class IntOpenCustomHashSetTest
+{
 
     @Test
-    void testGetNullKey() {
-        final IntOpenCustomHashSet s = new IntOpenCustomHashSet(new IntHash.Strategy() {
+    void testGetNullKey()
+    {
+        final IntOpenCustomHashSet s = new IntOpenCustomHashSet(new IntHash.Strategy()
+        {
 
             @Override
-            public int hashCode(int o) {
+            public int hashCode(int o)
+            {
                 return o % 10;
             }
 
             @Override
-            public boolean equals(int a, int b) {
+            public boolean equals(int a, int b)
+            {
                 return (a - b) % 10 == 0;
             }
         });
@@ -33,17 +37,20 @@ public class IntOpenCustomHashSetTest {
         assertEquals(10, s.iterator().nextInt());
     }
 
-
     @Test
-    void testCustomUsed() {
-        IntOpenCustomHashSet set = new IntOpenCustomHashSet(new IntHash.Strategy() {
+    void testCustomUsed()
+    {
+        IntOpenCustomHashSet set = new IntOpenCustomHashSet(new IntHash.Strategy()
+        {
             @Override
-            public int hashCode(int e) {
+            public int hashCode(int e)
+            {
                 return Integer.hashCode(e & 0xFFFF);
             }
 
             @Override
-            public boolean equals(int a, int b) {
+            public boolean equals(int a, int b)
+            {
                 return (a & 0xFFFF) == (b & 0xFFFF);
             }
         });

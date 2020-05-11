@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,15 +16,17 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author JiaweiMao 2017.04.13
  * @since 1.0-SNAPSHOT
  */
-public class ObjectSerializationTest {
+public class ObjectSerializationTest
+{
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException
+    {
 
         ObjectSerializationTest test = new ObjectSerializationTest();
         Student student = new Student();
@@ -36,18 +38,21 @@ public class ObjectSerializationTest {
         System.out.println(student1);
     }
 
-    private void writeJson(Student student) throws IOException {
+    private void writeJson(Student student) throws IOException
+    {
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(new File("student.json"), student);
     }
 
-    private Student readJson() throws IOException {
+    private Student readJson() throws IOException
+    {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(new File("student.json"), Student.class);
     }
 
     @Test
-    void readString() throws IOException {
+    void readString() throws IOException
+    {
         String jsonString = "{\"name\":\"Mahesh\", \"age\":21}";
         ObjectMapper mapper = new ObjectMapper();
         Student student = mapper.readValue(jsonString, Student.class);
@@ -62,7 +67,8 @@ public class ObjectSerializationTest {
     }
 
     @Test
-    void simpleDataBinding() throws IOException {
+    void simpleDataBinding() throws IOException
+    {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> stringObjectMap = new HashMap<>();
         int[] marks = {1, 2, 3};
@@ -87,7 +93,8 @@ public class ObjectSerializationTest {
     }
 
     @Test
-    void genericDataBinding() throws IOException {
+    void genericDataBinding() throws IOException
+    {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, UserData> userDataMap = new HashMap<>();
         UserData studentData = new UserData();
@@ -108,7 +115,8 @@ public class ObjectSerializationTest {
 
         // Array
         studentData.setMarks(marks);
-        TypeReference ref = new TypeReference<Map<String, UserData>>() {
+        TypeReference ref = new TypeReference<Map<String, UserData>>()
+        {
         };
 
         userDataMap.put("studentData1", studentData);
@@ -137,7 +145,8 @@ public class ObjectSerializationTest {
     }
 
     @Test
-    void treeModel() throws IOException {
+    void treeModel() throws IOException
+    {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString = "{\"name\":\"Mahesh Kumar\", \"age\":21,\"verified\":false,\"marks\": [100,90,85]}";
 
@@ -162,7 +171,8 @@ public class ObjectSerializationTest {
     }
 
     @Test
-    void jsonParser() throws IOException {
+    void jsonParser() throws IOException
+    {
         String carJson = "{ \"brand\" : \"Mercedes\", \"doors\" : 5 }";
         JsonFactory factory = new JsonFactory();
         JsonParser parser = factory.createParser(carJson);
@@ -173,7 +183,8 @@ public class ObjectSerializationTest {
     }
 
     @Test
-    void tree2Json() throws IOException {
+    void tree2Json() throws IOException
+    {
         ObjectMapper mapper = new ObjectMapper();
 
         ObjectNode rootNode = mapper.createObjectNode();
@@ -214,7 +225,8 @@ public class ObjectSerializationTest {
     }
 
     @Test
-    void stream() throws IOException {
+    void stream() throws IOException
+    {
         JsonFactory jasonFactory = new JsonFactory();
 
         JsonGenerator jsonGenerator = jasonFactory.createGenerator(new File("student.json"), JsonEncoding.UTF8);
@@ -303,72 +315,89 @@ public class ObjectSerializationTest {
     }
 }
 
-class Student {
+class Student
+{
     private String name;
     private int age;
 
-    public Student() {
+    public Student()
+    {
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public int getAge() {
+    public int getAge()
+    {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(int age)
+    {
         this.age = age;
     }
 
-    public String toString() {
+    public String toString()
+    {
         return "Student [ name: " + name + ", age: " + age + " ]";
     }
 }
 
-class UserData {
+class UserData
+{
     private Student student;
     private String name;
     private Boolean verified;
     private int[] marks;
 
-    public UserData() {
+    public UserData()
+    {
     }
 
-    public Student getStudent() {
+    public Student getStudent()
+    {
         return student;
     }
 
-    public void setStudent(Student student) {
+    public void setStudent(Student student)
+    {
         this.student = student;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public Boolean getVerified() {
+    public Boolean getVerified()
+    {
         return verified;
     }
 
-    public void setVerified(Boolean verified) {
+    public void setVerified(Boolean verified)
+    {
         this.verified = verified;
     }
 
-    public int[] getMarks() {
+    public int[] getMarks()
+    {
         return marks;
     }
 
-    public void setMarks(int[] marks) {
+    public void setMarks(int[] marks)
+    {
         this.marks = marks;
     }
 }

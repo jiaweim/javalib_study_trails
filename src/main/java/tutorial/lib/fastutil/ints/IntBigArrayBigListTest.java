@@ -2,17 +2,18 @@ package tutorial.lib.fastutil.ints;
 
 import it.unimi.dsi.fastutil.BigArrays;
 import it.unimi.dsi.fastutil.ints.*;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.Iterator;
 
-import static org.testng.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 @SuppressWarnings("rawtypes")
 public class IntBigArrayBigListTest
 {
-
     @Test
     public void testRemoveAllModifiesCollection()
     {
@@ -521,22 +522,26 @@ public class IntBigArrayBigListTest
         testLists(m, t, n, 0);
     }
 
-    @Test void test1()
+    @Test
+    void test1()
     {
         test(1);
     }
 
-    @Test void test10()
+    @Test
+    void test10()
     {
         test(10);
     }
 
-    @Test void test100()
+    @Test
+    void test100()
     {
         test(100);
     }
 
-    @Test(enabled = false)
+    @Test
+    @Disabled
     void test1000()
     {
         test(1000);

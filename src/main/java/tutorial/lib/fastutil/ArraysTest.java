@@ -4,18 +4,16 @@ import it.unimi.dsi.fastutil.Arrays;
 import it.unimi.dsi.fastutil.Swapper;
 import it.unimi.dsi.fastutil.ints.AbstractIntComparator;
 import it.unimi.dsi.fastutil.ints.IntArrays;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 import tutorial.lib.fastutil.ints.IntArraysTest;
 
 import java.util.Random;
 
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class ArraysTest
 {
-
-
     private static void testMergeSort(final int x[])
     {
         testMergeSort(x, 0, x.length);

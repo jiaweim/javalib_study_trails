@@ -5,7 +5,7 @@ import it.unimi.dsi.fastutil.objects.AbstractReference2ReferenceMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import it.unimi.dsi.fastutil.objects.Reference2ReferenceArrayMap;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -13,15 +13,14 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Map.Entry;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
-public class Reference2ReferenceArrayMapTest {
-
+public class Reference2ReferenceArrayMapTest
+{
     @Test
-    void testMap() {
+    void testMap()
+    {
         for (int i = 0; i <= 2; i++) {
             final Reference2ReferenceArrayMap<Object, Object> m = i == 0 ? new Reference2ReferenceArrayMap<>() : new
                     Reference2ReferenceArrayMap<>(i);
@@ -70,7 +69,8 @@ public class Reference2ReferenceArrayMapTest {
     }
 
     @Test
-    void testClone() {
+    void testClone()
+    {
         Reference2ReferenceArrayMap<Integer, Integer> m = new Reference2ReferenceArrayMap<Integer, Integer>();
         assertEquals(m, m.clone());
         m.put(new Integer(0), new Integer(1));
@@ -85,7 +85,8 @@ public class Reference2ReferenceArrayMapTest {
     }
 
     @Test
-    void testSerialisation() throws IOException, ClassNotFoundException {
+    void testSerialisation() throws IOException, ClassNotFoundException
+    {
         // We can't really test reference maps as equals() doesnt' work
         Object2ObjectArrayMap<Integer, Integer> m = new Object2ObjectArrayMap<Integer, Integer>();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

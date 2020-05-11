@@ -1,18 +1,19 @@
 package tutorial.lib.fastutil.ints;
 
 import it.unimi.dsi.fastutil.ints.*;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
-public class IntArrayIndirectPriorityQueueTest {
+public class IntArrayIndirectPriorityQueueTest
+{
 
     @Test
-    void testFront() {
+    void testFront()
+    {
         int refArray[] = {4, 3, 2, 1, 0, 3, 2, 1, 0, 2, 1, 0, 1, 0, 0};
         int tops[] = new int[refArray.length];
         final IntArrayIndirectPriorityQueue queue = new IntArrayIndirectPriorityQueue(refArray);
@@ -55,7 +56,8 @@ public class IntArrayIndirectPriorityQueueTest {
 
     private int[] ref;
 
-    private boolean heapEqual(int[] a, int[] b, int sizea, int sizeb) {
+    private boolean heapEqual(int[] a, int[] b, int sizea, int sizeb)
+    {
         if (sizea != sizeb) return false;
         int[] aa = new int[sizea];
         int[] bb = new int[sizea];
@@ -70,7 +72,8 @@ public class IntArrayIndirectPriorityQueueTest {
         return true;
     }
 
-    public void test(int n, IntComparator comparator) {
+    public void test(int n, IntComparator comparator)
+    {
         Exception mThrowsIllegal, tThrowsIllegal, mThrowsOutOfBounds, tThrowsOutOfBounds, mThrowsNoElement,
                 tThrowsNoElement;
         int rm = 0, rt = 0;
@@ -82,7 +85,7 @@ public class IntArrayIndirectPriorityQueueTest {
         IntArrayIndirectPriorityQueue m = new IntArrayIndirectPriorityQueue(ref, comparator);
         IntHeapIndirectPriorityQueue t = new IntHeapIndirectPriorityQueue(ref, comparator);
 
-		/* We add pairs to t. */
+        /* We add pairs to t. */
         for (int i = 0; i < n / 2; i++) {
             t.enqueue(i);
             m.enqueue(i);
@@ -91,7 +94,7 @@ public class IntArrayIndirectPriorityQueueTest {
 //		assertTrue( "Error: m and t differ after creation (" + m + ", " + t + ")", heapEqual( m.array, t.heap, m.size
 // (), t.size() ) );
 
-		/* Now we add and remove random data in m and t, checking that the result is the same. */
+        /* Now we add and remove random data in m and t, checking that the result is the same. */
 
         for (int i = 0; i < 2 * n; i++) {
             if (r.nextDouble() < 0.01) {
@@ -296,34 +299,38 @@ public class IntArrayIndirectPriorityQueueTest {
         }
 
 
-		/* Now we check that m actually holds the same data. */
+        /* Now we check that m actually holds the same data. */
 
         m.clear();
-        assertTrue( m.isEmpty());
+        assertTrue(m.isEmpty());
     }
 
 
     @Test
-    public void test1() {
+    public void test1()
+    {
         test(1, null);
         test(1, IntComparators.OPPOSITE_COMPARATOR);
 
     }
 
     @Test
-    public void test10() {
+    public void test10()
+    {
         test(10, null);
         test(10, IntComparators.OPPOSITE_COMPARATOR);
     }
 
     @Test
-    public void test100() {
+    public void test100()
+    {
         test(100, null);
         test(100, IntComparators.OPPOSITE_COMPARATOR);
     }
 
     @Test
-    public void test1000() {
+    public void test1000()
+    {
         test(1000, null);
         test(1000, IntComparators.OPPOSITE_COMPARATOR);
     }

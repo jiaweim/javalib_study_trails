@@ -2,7 +2,7 @@ package tutorial.lib.fastutil.ints;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author JiaweiMao on 2017.09.07
@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
  */
 public class Int2ObjectMapTest
 {
-
     @Test
     public void defaultValue()
     {

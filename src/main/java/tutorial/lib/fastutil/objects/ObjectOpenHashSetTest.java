@@ -3,19 +3,18 @@ package tutorial.lib.fastutil.objects;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ObjectRBTreeSet;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.*;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("rawtypes")
-public class ObjectOpenHashSetTest {
-
+public class ObjectOpenHashSetTest
+{
 
     @Test
     @SuppressWarnings("boxing")
-    void testStrangeRetainAllCase() {
-
+    void testStrangeRetainAllCase()
+    {
         ObjectArrayList<Integer> initialElements = ObjectArrayList.wrap(new Integer[]{586, 940,
                 1086, 1110, 1168, 1184, 1185, 1191, 1196, 1229, 1237, 1241,
                 1277, 1282, 1284, 1299, 1308, 1309, 1310, 1314, 1328, 1360,
@@ -59,7 +58,8 @@ public class ObjectOpenHashSetTest {
 
     private static java.util.Random r = new java.util.Random(0);
 
-    private static Object genKey() {
+    private static Object genKey()
+    {
         return Integer.toBinaryString(r.nextInt());
     }
 //
@@ -276,7 +276,8 @@ public class ObjectOpenHashSetTest {
 //    }
 
     @Test
-    public void testGet() {
+    public void testGet()
+    {
         final ObjectOpenHashSet<String> s = new ObjectOpenHashSet<String>();
         String a = "a";
         assertTrue(s.add(a));

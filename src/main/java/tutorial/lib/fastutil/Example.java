@@ -6,19 +6,20 @@ import it.unimi.dsi.fastutil.ints.IntSortedSet;
 import it.unimi.dsi.fastutil.longs.Long2IntAVLTreeMap;
 import it.unimi.dsi.fastutil.longs.Long2IntSortedMap;
 import it.unimi.dsi.fastutil.longs.LongBidirectionalIterator;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
  * @author JiaweiMao 2017.03.26
  * @since 1.0-SNAPSHOT
  */
-public class Example {
-
+public class Example
+{
     @Test
-    void sortedMap() {
+    void sortedMap()
+    {
         Long2IntSortedMap m = new Long2IntAVLTreeMap();
 
         // Modify and access its content
@@ -48,7 +49,8 @@ public class Example {
     }
 
     @Test
-    void sortedSet() {
+    void sortedSet()
+    {
         IntSortedSet s = new IntLinkedOpenHashSet(new int[]{4, 3, 2, 1});
         assertEquals(4, s.firstInt());
         assertEquals(1, s.lastInt());

@@ -5,7 +5,7 @@ import it.unimi.dsi.fastutil.ints.IntIterator;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.io.BinIO;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -14,21 +14,21 @@ import java.io.ObjectOutputStream;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-
-public class IntArraySetTest {
+public class IntArraySetTest
+{
 
     @SuppressWarnings("boxing")
     @Test
-    void testNullInEquals() {
+    void testNullInEquals()
+    {
         assertFalse(new IntArraySet(Arrays.asList(42)).equals(Collections.singleton(null)));
     }
 
     @Test
-    void testSet() {
+    void testSet()
+    {
         for (int i = 0; i <= 1; i++) {
             final IntArraySet s = i == 0 ? new IntArraySet() : new IntArraySet(new int[i]);
             assertTrue(s.add(1));
@@ -58,7 +58,8 @@ public class IntArraySetTest {
     }
 
     @Test
-    void testClone() {
+    void testClone()
+    {
         IntArraySet s = new IntArraySet();
         assertEquals(s, s.clone());
         s.add(0);
@@ -74,7 +75,8 @@ public class IntArraySetTest {
     }
 
     @Test
-    void testSerialisation() throws IOException, ClassNotFoundException {
+    void testSerialisation() throws IOException, ClassNotFoundException
+    {
         IntArraySet s = new IntArraySet();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(baos);
@@ -93,7 +95,8 @@ public class IntArraySetTest {
     }
 
     @Test
-    void testRemove() {
+    void testRemove()
+    {
         IntSet set = new IntArraySet(new int[]{42});
 
         IntIterator iterator = set.iterator();

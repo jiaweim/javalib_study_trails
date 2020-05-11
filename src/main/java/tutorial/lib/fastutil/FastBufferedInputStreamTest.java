@@ -2,7 +2,7 @@ package tutorial.lib.fastutil;
 
 import it.unimi.dsi.fastutil.io.FastBufferedInputStream;
 import it.unimi.dsi.fastutil.io.FastBufferedInputStream.LineTerminator;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
@@ -10,11 +10,12 @@ import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.Random;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class FastBufferedInputStreamTest {
+public class FastBufferedInputStreamTest
+{
     private final static boolean DEBUG = false;
 
     /**
@@ -22,7 +23,8 @@ public class FastBufferedInputStreamTest {
      * even it could actually return more data, and skips less bytes than it could.
      */
 
-    private static class BastardByteArrayInputStream extends ByteArrayInputStream {
+    private static class BastardByteArrayInputStream extends ByteArrayInputStream
+    {
         private final static long seed = System.currentTimeMillis();
         private final static Random r = new Random(seed);
 
@@ -30,17 +32,20 @@ public class FastBufferedInputStreamTest {
             System.err.println("Seed: " + seed);
         }
 
-        public BastardByteArrayInputStream(byte[] array) {
+        public BastardByteArrayInputStream(byte[] array)
+        {
             super(array);
         }
 
         @Override
-        public int read(byte[] buffer, int offset, int length) {
+        public int read(byte[] buffer, int offset, int length)
+        {
             int k = r.nextInt(2) + 1;
             return super.read(buffer, offset, length < k ? length : k);
         }
 
-        public long skip(long n) {
+        public long skip(long n)
+        {
             int k = r.nextInt(2);
             return super.skip(n < k ? n : k);
         }
@@ -48,7 +53,8 @@ public class FastBufferedInputStreamTest {
     }
 
     @SuppressWarnings("resource")
-    public void testReadline(int bufferSize) throws IOException {
+    public void testReadline(int bufferSize) throws IOException
+    {
         FastBufferedInputStream stream;
         byte[] b;
 
@@ -149,7 +155,8 @@ public class FastBufferedInputStreamTest {
     }
 
     @Test
-    public void testReadLine() throws IOException {
+    public void testReadLine() throws IOException
+    {
         testReadline(1);
         testReadline(2);
         testReadline(3);
@@ -161,7 +168,8 @@ public class FastBufferedInputStreamTest {
     }
 
     @SuppressWarnings("resource")
-    public void testSkip(int bufferSize) throws IOException {
+    public void testSkip(int bufferSize) throws IOException
+    {
         FastBufferedInputStream stream;
 
         stream = new FastBufferedInputStream(new BastardByteArrayInputStream(new byte[]{'A', 'B', 'C', '\r', '\n',
@@ -177,7 +185,8 @@ public class FastBufferedInputStreamTest {
     }
 
     @Test
-    public void testSkip() throws IOException {
+    public void testSkip() throws IOException
+    {
         testSkip(1);
         testSkip(2);
         testSkip(3);
@@ -189,7 +198,8 @@ public class FastBufferedInputStreamTest {
     }
 
     @Test
-    public void testPosition() throws IOException {
+    public void testPosition() throws IOException
+    {
         File temp = File.createTempFile(this.getClass().getSimpleName(), ".tmp");
         temp.deleteOnExit();
         FileOutputStream fos = new FileOutputStream(temp);
@@ -233,7 +243,8 @@ public class FastBufferedInputStreamTest {
     }
 
     @Test
-    public void testRead() throws IOException {
+    public void testRead() throws IOException
+    {
         // Reads with length larger than buffer size
 
         // No head, no stream
@@ -273,7 +284,8 @@ public class FastBufferedInputStreamTest {
     }
 
     @SuppressWarnings("resource")
-    public void testRandom(int bufferSize) throws IOException {
+    public void testRandom(int bufferSize) throws IOException
+    {
         File temp = File.createTempFile(this.getClass().getSimpleName(), "tmp");
         temp.deleteOnExit();
 
@@ -348,7 +360,8 @@ public class FastBufferedInputStreamTest {
     }
 
     @Test
-    public void testRandom() throws IOException {
+    public void testRandom() throws IOException
+    {
         testRandom(1);
         testRandom(2);
         testRandom(3);

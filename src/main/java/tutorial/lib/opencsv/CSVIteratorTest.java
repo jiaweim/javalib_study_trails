@@ -2,16 +2,14 @@ package tutorial.lib.opencsv;
 
 import com.opencsv.CSVIterator;
 import com.opencsv.CSVReader;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
 
 public class CSVIteratorTest
 {
@@ -19,7 +17,7 @@ public class CSVIteratorTest
     private CSVIterator iterator;
     private CSVReader mockReader;
 
-    @BeforeClass
+    @BeforeAll
     public void setUp() throws IOException
     {
         mockReader = mock(CSVReader.class);
@@ -27,17 +25,17 @@ public class CSVIteratorTest
         iterator = new CSVIterator(mockReader);
     }
 
-    @Test(expectedExceptions = RuntimeException.class)
+    @Test
     public void readerExceptionCausesRunTimeException() throws IOException
     {
         when(mockReader.readNext()).thenThrow(new IOException("reader threw test exception"));
-        iterator.next();
+        assertThrows(RuntimeException.class, () -> iterator.next());
     }
 
-    @Test(expectedExceptions = UnsupportedOperationException.class)
+    @Test
     public void removethrowsUnsupportedOperationException()
     {
-        iterator.remove();
+        assertThrows(UnsupportedOperationException.class, () -> iterator.remove());
     }
 
     @Test

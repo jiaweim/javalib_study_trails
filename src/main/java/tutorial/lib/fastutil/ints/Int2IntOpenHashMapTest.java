@@ -6,15 +6,15 @@ import it.unimi.dsi.fastutil.ints.*;
 import it.unimi.dsi.fastutil.ints.Int2IntMap.Entry;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.Arrays;
 import java.util.Map;
 
-import static org.testng.Assert.*;
-import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @SuppressWarnings("rawtypes")
@@ -328,7 +328,8 @@ public class Int2IntOpenHashMapTest
         test(100, Hash.VERY_FAST_LOAD_FACTOR);
     }
 
-    @Test(enabled = false, description = "Too long")
+    @Test
+    @Disabled(value = "Too long")
     void test1000() throws IOException, ClassNotFoundException
     {
         test(1000, Hash.DEFAULT_LOAD_FACTOR);

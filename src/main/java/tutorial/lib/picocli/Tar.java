@@ -1,9 +1,9 @@
 package tutorial.lib.picocli;
 
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 import picocli.CommandLine;
-import picocli.CommandLine.Parameters;
 import picocli.CommandLine.Option;
+import picocli.CommandLine.Parameters;
 
 import java.io.File;
 import java.util.Arrays;

@@ -3,17 +3,17 @@ package tutorial.lib.fastutil.objects;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectSets;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
-public class ObjectArrayListTest {
-
+public class ObjectArrayListTest
+{
     @SuppressWarnings("boxing")
     @Test
-    void testRemoveAll() {
+    void testRemoveAll()
+    {
         ObjectArrayList<Integer> l = ObjectArrayList.wrap(new Integer[]{0, 1, 1, 2});
         l.removeAll(ObjectSets.singleton(1));
 

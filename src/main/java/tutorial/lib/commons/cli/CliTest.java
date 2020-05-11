@@ -1,14 +1,14 @@
 package tutorial.lib.commons.cli;
 
 import org.apache.commons.cli.*;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
-import static org.testng.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author JiaweiMao
@@ -17,6 +17,12 @@ import static org.testng.Assert.*;
  */
 public class CliTest
 {
+    @Test
+    public void testCreate()
+    {
+
+    }
+
     @Test
     public void antTest()
     {
@@ -65,7 +71,7 @@ public class CliTest
     private CommandLineParser parser;
     private Options options;
 
-    @BeforeClass
+    @BeforeAll
     public void setUp()
     {
         options = new Options()

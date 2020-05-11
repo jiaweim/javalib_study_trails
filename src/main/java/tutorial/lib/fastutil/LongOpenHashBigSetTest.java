@@ -4,45 +4,44 @@ import it.unimi.dsi.fastutil.Hash;
 import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.longs.LongOpenHashBigSet;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
-public class LongOpenHashBigSetTest {
+public class LongOpenHashBigSetTest
+{
 
-	@Test
-	public void testRemove0() {
-		LongOpenHashBigSet s = new LongOpenHashBigSet( Hash.DEFAULT_INITIAL_SIZE );
-		for( int i = -1; i <= 1; i++ ) assertTrue( s.add( i ) );
-		assertTrue( s.remove( 0 ) );
-		LongIterator iterator = s.iterator();
-		LongOpenHashSet z = new LongOpenHashSet();
-		z.add( iterator.nextLong() );
-		z.add( iterator.nextLong() );
-		assertFalse( iterator.hasNext() );
-		assertEquals( new LongOpenHashSet( new long[] { -1, 1 } ), z );
-		
-		s = new LongOpenHashBigSet( Hash.DEFAULT_INITIAL_SIZE );
-		for( int i = -1; i <= 1; i++ ) assertTrue( s.add( i ) );
-		iterator = s.iterator();
-		while( iterator.hasNext() ) if ( iterator.nextLong() == 0 ) iterator.remove();
-		
-		assertFalse( s.contains( 0 ) );
-		
-		iterator = s.iterator();
-		long[] content = new long[ 2 ];
-		content[ 0 ] = iterator.nextLong();
-		content[ 1 ] = iterator.nextLong();
-		assertFalse( iterator.hasNext() );
-		Arrays.sort( content );
-		assertArrayEquals( new long[] { -1, 1 }, content );
-	}
+    @Test
+    public void testRemove0()
+    {
+        LongOpenHashBigSet s = new LongOpenHashBigSet(Hash.DEFAULT_INITIAL_SIZE);
+        for (int i = -1; i <= 1; i++) assertTrue(s.add(i));
+        assertTrue(s.remove(0));
+        LongIterator iterator = s.iterator();
+        LongOpenHashSet z = new LongOpenHashSet();
+        z.add(iterator.nextLong());
+        z.add(iterator.nextLong());
+        assertFalse(iterator.hasNext());
+        assertEquals(new LongOpenHashSet(new long[]{-1, 1}), z);
+
+        s = new LongOpenHashBigSet(Hash.DEFAULT_INITIAL_SIZE);
+        for (int i = -1; i <= 1; i++) assertTrue(s.add(i));
+        iterator = s.iterator();
+        while (iterator.hasNext()) if (iterator.nextLong() == 0) iterator.remove();
+
+        assertFalse(s.contains(0));
+
+        iterator = s.iterator();
+        long[] content = new long[2];
+        content[0] = iterator.nextLong();
+        content[1] = iterator.nextLong();
+        assertFalse(iterator.hasNext());
+        Arrays.sort(content);
+        assertArrayEquals(new long[]{-1, 1}, content);
+    }
 //
 //	@Test
 //	public void testWrapAround() {

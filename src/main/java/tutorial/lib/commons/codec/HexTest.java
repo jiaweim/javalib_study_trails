@@ -2,7 +2,7 @@ package tutorial.lib.commons.codec;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author JiaweiMao 2017-05-03
@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
  */
 public class HexTest
 {
-
     @Test
     void test() throws DecoderException
     {

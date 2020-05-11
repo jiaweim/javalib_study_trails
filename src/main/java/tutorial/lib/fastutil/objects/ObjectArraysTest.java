@@ -2,16 +2,13 @@ package tutorial.lib.fastutil.objects;
 
 
 import it.unimi.dsi.fastutil.objects.ObjectArrays;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("boxing")
 public class ObjectArraysTest

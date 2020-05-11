@@ -3,10 +3,9 @@ package tutorial.lib.fastutil.ints;
 
 import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.ints.IntSets;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.assertNull;
-
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class IntSetsTest
 {

@@ -5,10 +5,12 @@ import org.apache.poi.xssf.streaming.SXSSFCell;
 import org.apache.poi.xssf.streaming.SXSSFRow;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
-import org.testng.Assert;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * @author JiaweiMao
@@ -32,12 +34,12 @@ public class SXSSFTest
 
         // Rows with rownum < 900 are flushed and not accessible
         for (int rownum = 0; rownum < 900; rownum++) {
-            Assert.assertNull(sh.getRow(rownum));
+            assertNull(sh.getRow(rownum));
         }
 
         // ther last 100 rows are still in memory
         for (int rownum = 900; rownum < 1000; rownum++) {
-            Assert.assertNotNull(sh.getRow(rownum));
+            assertNotNull(sh.getRow(rownum));
         }
 
         FileOutputStream out = new FileOutputStream("sxssf.xlsx");

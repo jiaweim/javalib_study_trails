@@ -15,13 +15,18 @@
         <module>jena</module>
         <module>rdf4j</module>
         <module>sqlite</module>
+        <module>libsvm</module>
+        <module>mockito</module>
+        <module>gson</module>
     </modules>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.58</version>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.1.0</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -34,14 +39,14 @@
             <version>3.9.6</version>
         </dependency>
         <dependency>
-            <groupId>com.beust</groupId>
-            <artifactId>jcommander</artifactId>
-            <version>1.72</version>
+            <groupId>org.jgrapht</groupId>
+            <artifactId>jgrapht-core</artifactId>
+            <version>1.3.1</version>
         </dependency>
         <dependency>
             <groupId>org.jgrapht</groupId>
-            <artifactId>jgrapht-core</artifactId>
-            <version>1.1.0</version>
+            <artifactId>jgrapht-io</artifactId>
+            <version>1.3.1</version>
         </dependency>
         <dependency>
             <groupId>commons-cli</groupId>
@@ -73,21 +78,15 @@
             <artifactId>commons-codec</artifactId>
             <version>1.10</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>4.1.0</version>
-        </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>4.1.0</version>
+            <version>4.1.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-scratchpad</artifactId>
-            <version>3.17</version>
+            <version>4.1.2</version>
         </dependency>
         <dependency>
             <groupId>com.opencsv</groupId>
@@ -109,16 +108,34 @@
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.testng</groupId>-->
+<!--            <artifactId>testng</artifactId>-->
+<!--            <version>6.14.3</version>-->
+<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.14.3</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.6.0-M1</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>2.18.0</version>
+            <version>3.1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.beust</groupId>
+            <artifactId>jcommander</artifactId>
+            <version>1.78</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.squareup.okio/okio -->
+        <dependency>
+            <groupId>com.squareup.okio</groupId>
+            <artifactId>okio</artifactId>
+            <version>2.4.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -138,11 +155,10 @@
 
     <repositories>
         <repository>
-            <id>central</id>
-            <name>Maven Central</name>
-            <url>http://central.maven.org/maven2/</url>
+            <id>aliyun</id>
+            <name>aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
         </repository>
-
     </repositories>
 
 </project>

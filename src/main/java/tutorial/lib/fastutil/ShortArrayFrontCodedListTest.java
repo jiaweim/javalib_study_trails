@@ -2,24 +2,26 @@ package tutorial.lib.fastutil;
 
 import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 import it.unimi.dsi.fastutil.shorts.ShortArrayFrontCodedList;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @SuppressWarnings({"unchecked"})
-public class ShortArrayFrontCodedListTest {
-
+public class ShortArrayFrontCodedListTest
+{
 
     private static java.util.Random r = new java.util.Random(0);
 
-    private static short genKey() {
+    private static short genKey()
+    {
         return (short) (r.nextInt());
     }
 
-    private static boolean contentEquals(java.util.List x, java.util.List y) {
+    private static boolean contentEquals(java.util.List x, java.util.List y)
+    {
         if (x.size() != y.size()) return false;
         for (int i = 0; i < x.size(); i++)
             if (!java.util.Arrays.equals((short[]) x.get(i), (short[]) y.get(i))) return false;
@@ -30,7 +32,8 @@ public class ShortArrayFrontCodedListTest {
 
     private static short[][] a;
 
-    private static void test(int n) throws IOException, ClassNotFoundException {
+    private static void test(int n) throws IOException, ClassNotFoundException
+    {
         l = new int[n];
         a = new short[n][];
         for (int i = 0; i < n; i++)
@@ -46,11 +49,11 @@ public class ShortArrayFrontCodedListTest {
         // System.out.println(m);
         // for( i = 0; i < t.size(); i++ )
         // System.out.println(ARRAY_LIST.wrap((KEY_TYPE[])t.get(i)));
-		/* Now we check that m actually holds that data. */
+        /* Now we check that m actually holds that data. */
         assertTrue(contentEquals(m, t));
-		/* Now we check cloning. */
+        /* Now we check cloning. */
         assertTrue(contentEquals(m, m.clone()));
-		/* Now we play with iterators. */
+        /* Now we play with iterators. */
         {
             ObjectListIterator i;
             java.util.ListIterator j;
@@ -100,27 +103,32 @@ public class ShortArrayFrontCodedListTest {
     }
 
     @Test
-    public void test1() throws IOException, ClassNotFoundException {
+    public void test1() throws IOException, ClassNotFoundException
+    {
         test(1);
     }
 
     @Test
-    public void test10() throws Exception, ClassNotFoundException {
+    public void test10() throws Exception, ClassNotFoundException
+    {
         test(10);
     }
 
     @Test
-    public void test100() throws IOException, ClassNotFoundException {
+    public void test100() throws IOException, ClassNotFoundException
+    {
         test(100);
     }
 
     @Test
-    public void test1000() throws IOException, ClassNotFoundException {
+    public void test1000() throws IOException, ClassNotFoundException
+    {
         test(1000);
     }
 
     @Test
-    public void test10000() throws IOException, ClassNotFoundException {
+    public void test10000() throws IOException, ClassNotFoundException
+    {
         test(10000);
     }
 }

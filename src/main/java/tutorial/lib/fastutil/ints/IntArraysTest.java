@@ -4,27 +4,25 @@ package tutorial.lib.fastutil.ints;
 import it.unimi.dsi.fastutil.ints.AbstractIntComparator;
 import it.unimi.dsi.fastutil.ints.IntArrays;
 import it.unimi.dsi.fastutil.ints.IntComparators;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Random;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-
-public class IntArraysTest {
-
-    public static int[] identity(final int n) {
+public class IntArraysTest
+{
+    public static int[] identity(final int n)
+    {
         final int[] perm = new int[n];
         for (int i = perm.length; i-- != 0; ) perm[i] = i;
         return perm;
     }
 
     @Test
-    void testMergeSort() {
+    void testMergeSort()
+    {
         int[] a = {2, 1, 5, 2, 1, 0, 9, 1, 4, 2, 4, 6, 8, 9, 10, 12, 1, 7}, b = a.clone(), sorted = a.clone();
         Arrays.sort(sorted);
         IntArrays.mergeSort(b);
@@ -33,21 +31,25 @@ public class IntArraysTest {
         assertArrayEquals(sorted, b);
 
         final int[] d = a.clone();
-        IntArrays.mergeSort(d, new AbstractIntComparator() {
+        IntArrays.mergeSort(d, new AbstractIntComparator()
+        {
             private static final long serialVersionUID = 1L;
 
             @Override
-            public int compare(int k1, int k2) {
+            public int compare(int k1, int k2)
+            {
                 return k1 - k2;
             }
         });
         assertArrayEquals(sorted, d);
 
-        IntArrays.mergeSort(d, new AbstractIntComparator() {
+        IntArrays.mergeSort(d, new AbstractIntComparator()
+        {
             private static final long serialVersionUID = 1L;
 
             @Override
-            public int compare(int k1, int k2) {
+            public int compare(int k1, int k2)
+            {
                 return k1 - k2;
             }
         });
@@ -56,7 +58,8 @@ public class IntArraysTest {
 
 
     @Test
-    void testMergeSortSmallSupport() {
+    void testMergeSortSmallSupport()
+    {
         int[] a = {2, 1, 5, 2, 1, 0, 9, 1, 4, 2, 4, 6, 8, 9, 10, 12, 1, 7};
         for (int to = 1; to < a.length; to++)
             for (int from = 0; from <= to; from++) {
@@ -68,7 +71,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testQuickSort() {
+    void testQuickSort()
+    {
         int[] a = {2, 1, 5, 2, 1, 0, 9, 1, 4, 2, 4, 6, 8, 9, 10, 12, 1, 7}, b = a.clone(), sorted = a.clone();
         Arrays.sort(sorted);
         Arrays.sort(b);
@@ -77,20 +81,24 @@ public class IntArraysTest {
         assertArrayEquals(sorted, b);
 
         final int[] d = a.clone();
-        IntArrays.quickSort(d, new AbstractIntComparator() {
+        IntArrays.quickSort(d, new AbstractIntComparator()
+        {
             private static final long serialVersionUID = 1L;
 
             @Override
-            public int compare(int k1, int k2) {
+            public int compare(int k1, int k2)
+            {
                 return k1 - k2;
             }
         });
         assertArrayEquals(sorted, d);
-        IntArrays.quickSort(d, new AbstractIntComparator() {
+        IntArrays.quickSort(d, new AbstractIntComparator()
+        {
             private static final long serialVersionUID = 1L;
 
             @Override
-            public int compare(int k1, int k2) {
+            public int compare(int k1, int k2)
+            {
                 return k1 - k2;
             }
         });
@@ -98,7 +106,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testParallelQuickSort() {
+    void testParallelQuickSort()
+    {
         int[] a = {2, 1, 5, 2, 1, 0, 9, 1, 4, 2, 4, 6, 8, 9, 10, 12, 1, 7}, b = a.clone(), sorted = a.clone();
         Arrays.sort(sorted);
         Arrays.sort(b);
@@ -112,7 +121,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testQuickSort1() {
+    void testQuickSort1()
+    {
         int[] t = {2, 1, 0, 4};
         IntArrays.quickSort(t);
         for (int i = t.length - 1; i-- != 0; ) assertTrue(t[i] <= t[i + 1]);
@@ -148,7 +158,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testQuickSort1Undirect() {
+    void testQuickSort1Undirect()
+    {
         int[] t = {2, 1, 0, 4};
         int[] perm = identity(t.length);
         IntArrays.quickSortIndirect(perm, t);
@@ -213,7 +224,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testQuickSort1Comp() {
+    void testQuickSort1Comp()
+    {
         int[] t = {2, 1, 0, 4};
         IntArrays.quickSort(t, IntComparators.OPPOSITE_COMPARATOR);
         for (int i = t.length - 1; i-- != 0; ) assertTrue(t[i] >= t[i + 1]);
@@ -250,7 +262,8 @@ public class IntArraysTest {
 
 
     @Test
-    void testParallelQuickSort1Comp() {
+    void testParallelQuickSort1Comp()
+    {
         int[] t = {2, 1, 0, 4};
         IntArrays.parallelQuickSort(t, IntComparators.OPPOSITE_COMPARATOR);
         for (int i = t.length - 1; i-- != 0; ) assertTrue(t[i] >= t[i + 1]);
@@ -287,7 +300,8 @@ public class IntArraysTest {
 
 
     @Test
-    void testParallelQuickSort1() {
+    void testParallelQuickSort1()
+    {
         int[] t = {2, 1, 0, 4};
         IntArrays.parallelQuickSort(t);
         for (int i = t.length - 1; i-- != 0; ) assertTrue(t[i] <= t[i + 1]);
@@ -323,7 +337,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testParallelQuickSort1Undirect() {
+    void testParallelQuickSort1Undirect()
+    {
         int[] t = {2, 1, 0, 4};
         int[] perm = identity(t.length);
         IntArrays.parallelQuickSortIndirect(perm, t);
@@ -389,7 +404,8 @@ public class IntArraysTest {
 
 
     @Test
-    void testQuickSort2() {
+    void testQuickSort2()
+    {
         int[][] d = new int[2][];
 
         d[0] = new int[10];
@@ -441,7 +457,8 @@ public class IntArraysTest {
 
 
     @Test
-    void testParallelQuickSort2() {
+    void testParallelQuickSort2()
+    {
         int[][] d = new int[2][];
 
         d[0] = new int[10];
@@ -492,7 +509,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testShuffle() {
+    void testShuffle()
+    {
         int[] a = new int[100];
         for (int i = a.length; i-- != 0; ) a[i] = i;
         IntArrays.shuffle(a, new Random());
@@ -504,7 +522,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testShuffleFragment() {
+    void testShuffleFragment()
+    {
         int[] a = new int[100];
         for (int i = a.length; i-- != 0; ) a[i] = -1;
         for (int i = 10; i < 30; i++) a[i] = i - 10;
@@ -517,7 +536,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testRadixSort1() {
+    void testRadixSort1()
+    {
         int[] t = {2, 1, 0, 4};
         IntArrays.radixSort(t);
         for (int i = t.length - 1; i-- != 0; ) assertTrue(t[i] <= t[i + 1]);
@@ -553,7 +573,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testParallelRadixSort1() {
+    void testParallelRadixSort1()
+    {
         int[] t = {2, 1, 0, 4};
         IntArrays.parallelRadixSort(t);
         for (int i = t.length - 1; i-- != 0; ) assertTrue(t[i] <= t[i + 1]);
@@ -589,7 +610,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testRadixSort2() {
+    void testRadixSort2()
+    {
         int[][] d = new int[2][];
 
         d[0] = new int[10];
@@ -640,7 +662,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testParallelRadixSort2() {
+    void testParallelRadixSort2()
+    {
         int[][] d = new int[2][];
 
         d[0] = new int[10];
@@ -692,7 +715,8 @@ public class IntArraysTest {
 
 
     @Test
-    void testRadixSort() {
+    void testRadixSort()
+    {
         int[][] t = {{2, 1, 0, 4}};
         IntArrays.radixSort(t);
         for (int i = t[0].length - 1; i-- != 0; ) assertTrue(t[0][i] <= t[0][i + 1]);
@@ -753,7 +777,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testRadixSortIndirectStable() {
+    void testRadixSortIndirectStable()
+    {
         int[] t = {2, 1, 0, 4};
         int[] perm = identity(t.length);
         IntArrays.radixSortIndirect(perm, t, true);
@@ -836,7 +861,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testRadixSortIndirectUnstable() {
+    void testRadixSortIndirectUnstable()
+    {
         int[] t = {2, 1, 0, 4};
         int[] perm = identity(t.length);
         IntArrays.radixSortIndirect(perm, t, false);
@@ -901,7 +927,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testParallelRadixSortIndirectStable() {
+    void testParallelRadixSortIndirectStable()
+    {
         int[] t = {2, 1, 0, 4};
         int[] perm = identity(t.length);
         IntArrays.parallelRadixSortIndirect(perm, t, true);
@@ -984,7 +1011,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testParallelRadixSortIndirectUnstable() {
+    void testParallelRadixSortIndirectUnstable()
+    {
         int[] t = {2, 1, 0, 4};
         int[] perm = identity(t.length);
         IntArrays.parallelRadixSortIndirect(perm, t, false);
@@ -1049,7 +1077,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testRadixSort2IndirectStable() {
+    void testRadixSort2IndirectStable()
+    {
         int[] t = {2, 1, 0, 4};
         int[] u = {3, 2, 1, 0};
         int[] perm = identity(t.length);
@@ -1151,7 +1180,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testRadixSort2IndirectUnstable() {
+    void testRadixSort2IndirectUnstable()
+    {
         int[] t = {2, 1, 0, 4};
         int[] u = {3, 2, 1, 0};
         int[] perm = identity(t.length);
@@ -1254,13 +1284,15 @@ public class IntArraysTest {
     }
 
     @Test
-    void testBinarySearchLargeKey() {
+    void testBinarySearchLargeKey()
+    {
         final int[] a = {1, 2, 3};
         IntArrays.binarySearch(a, 4);
     }
 
     @Test
-    void testReverse() {
+    void testReverse()
+    {
         assertArrayEquals(new int[]{0, 1, 2, 3}, IntArrays.reverse(new int[]{3, 2, 1, 0}));
         assertArrayEquals(new int[]{0, 1, 2, 3, 4}, IntArrays.reverse(new int[]{4, 3, 2, 1, 0}));
         assertArrayEquals(new int[]{4, 1, 2, 3, 0}, IntArrays.reverse(new int[]{4, 3, 2, 1, 0}, 1, 4));
@@ -1269,7 +1301,8 @@ public class IntArraysTest {
     }
 
     @Test
-    void testStabilize() {
+    void testStabilize()
+    {
         int[] perm, val;
 
         perm = new int[]{0, 1, 2, 3};

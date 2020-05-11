@@ -3,15 +3,11 @@ package tutorial.lib.fastutil;
 import it.unimi.dsi.fastutil.bytes.ByteBigArrays;
 import it.unimi.dsi.fastutil.doubles.DoubleIterator;
 import it.unimi.dsi.fastutil.io.BinIO;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.*;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BinIOTest
 {

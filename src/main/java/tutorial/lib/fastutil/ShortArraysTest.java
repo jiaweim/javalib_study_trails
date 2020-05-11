@@ -1,11 +1,11 @@
 package tutorial.lib.fastutil;
 
 import it.unimi.dsi.fastutil.shorts.ShortArrays;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class ShortArraysTest

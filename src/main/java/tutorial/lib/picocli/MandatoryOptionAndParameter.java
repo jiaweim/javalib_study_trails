@@ -1,11 +1,11 @@
 package tutorial.lib.picocli;
 
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 import picocli.CommandLine;
 
 import java.io.File;
 
-import static org.testng.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author JiaweiMao

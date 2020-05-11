@@ -2,11 +2,10 @@ package tutorial.lib.fastutil;
 
 
 import it.unimi.dsi.fastutil.HashCommon;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class HashCommonTest
 {

@@ -4,22 +4,21 @@ import it.unimi.dsi.fastutil.io.BinIO;
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import it.unimi.dsi.fastutil.objects.ReferenceArraySet;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-
-public class ReferenceArraySetTest {
+public class ReferenceArraySetTest
+{
 
     @Test
-    void testSet() {
+    void testSet()
+    {
         for (int i = 0; i <= 2; i++) {
             final ReferenceArraySet<Object> s = i == 0 ? new ReferenceArraySet<>() : new
                     ReferenceArraySet<>(2);
@@ -54,7 +53,8 @@ public class ReferenceArraySetTest {
     }
 
     @Test
-    void testClone() {
+    void testClone()
+    {
         ReferenceArraySet<Integer> s = new ReferenceArraySet<>();
         assertEquals(s, s.clone());
 
@@ -72,7 +72,8 @@ public class ReferenceArraySetTest {
     }
 
     @Test
-    void testSerialisation() throws IOException, ClassNotFoundException {
+    void testSerialisation() throws IOException, ClassNotFoundException
+    {
         // We can't really test reference maps as equals() doesnt' work
         ObjectArraySet<Integer> s = new ObjectArraySet<>();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

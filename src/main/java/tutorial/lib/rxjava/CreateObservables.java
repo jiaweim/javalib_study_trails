@@ -1,7 +1,7 @@
 package tutorial.lib.rxjava;
 
 import io.reactivex.Observable;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author JiaweiMao on 2017.09.21

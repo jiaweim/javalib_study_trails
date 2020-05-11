@@ -5,7 +5,7 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.WorkbookUtil;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,7 +23,6 @@ import java.util.Date;
  */
 public class QuickGuide
 {
-
     /**
      * Creates a cell and aligns it a certain way.
      *

@@ -3,27 +3,31 @@ package tutorial.lib.fastutil.objects;
 import it.unimi.dsi.fastutil.Hash;
 import it.unimi.dsi.fastutil.bytes.ByteArrays;
 import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
-public class ObjectOpenCustomHashSetTest {
+public class ObjectOpenCustomHashSetTest
+{
 
     @Test
-    void testGetNullKey() {
-        final ObjectOpenCustomHashSet<Integer> s = new ObjectOpenCustomHashSet<Integer>(new Hash.Strategy<Integer>() {
+    void testGetNullKey()
+    {
+        final ObjectOpenCustomHashSet<Integer> s = new ObjectOpenCustomHashSet<Integer>(new Hash.Strategy<Integer>()
+        {
 
             @Override
-            public int hashCode(Integer o) {
+            public int hashCode(Integer o)
+            {
                 return o == null ? 0 : o % 10;
             }
 
             @Override
-            public boolean equals(Integer a, Integer b) {
+            public boolean equals(Integer a, Integer b)
+            {
                 if (((a == null) != (b == null)) || a == null) return false;
                 return ((a - b) % 10) == 0;
             }
@@ -35,7 +39,8 @@ public class ObjectOpenCustomHashSetTest {
     }
 
     @Test
-    void testNullKey() {
+    void testNullKey()
+    {
         Random random = new Random(0);
         ObjectOpenCustomHashSet<byte[]> s = new ObjectOpenCustomHashSet<byte[]>(ByteArrays.HASH_STRATEGY);
         for (int i = 0; i < 1000000; i++) {

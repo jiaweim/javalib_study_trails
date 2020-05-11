@@ -2,17 +2,16 @@ package tutorial.lib.fastutil;
 
 import it.unimi.dsi.fastutil.chars.CharArrayFrontCodedList;
 import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @SuppressWarnings({"unchecked"})
 public class CharArrayFrontCodedListTest
 {
-
 
     private static java.util.Random r = new java.util.Random(0);
 
@@ -51,9 +50,9 @@ public class CharArrayFrontCodedListTest
         // System.out.println(ARRAY_LIST.wrap((KEY_TYPE[])t.get(i)));
         /* Now we check that m actually holds that data. */
         assertTrue(contentEquals(m, t));
-		/* Now we check cloning. */
+        /* Now we check cloning. */
         assertTrue(contentEquals(m, m.clone()));
-		/* Now we play with iterators. */
+        /* Now we play with iterators. */
         {
             ObjectListIterator i;
             java.util.ListIterator j;

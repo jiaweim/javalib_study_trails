@@ -2,20 +2,16 @@ package tutorial.lib.fastutil.objects;
 
 import it.unimi.dsi.fastutil.objects.ObjectBigArrays;
 import it.unimi.dsi.fastutil.objects.ObjectComparators;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
 import static it.unimi.dsi.fastutil.objects.ObjectBigArrays.get;
 import static it.unimi.dsi.fastutil.objects.ObjectBigArrays.set;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ObjectBigArraysTest
 {
-
     @SuppressWarnings({"unchecked", "boxing"})
     @Test
     void testQuickSort()

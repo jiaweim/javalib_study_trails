@@ -4,7 +4,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
@@ -25,10 +26,10 @@ public class Cookbooks
             return s;
     }
 
-    @Test(enabled = false)
+    @Test
+    @Disabled
     public void sample() throws IOException
     {
-
         String url = "https://news.ycombinator.com/";
         Document doc = Jsoup.connect(url).get();
         Elements links = doc.select("a[href]");

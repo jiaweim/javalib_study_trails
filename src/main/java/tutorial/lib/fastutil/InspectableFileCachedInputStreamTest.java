@@ -2,7 +2,7 @@ package tutorial.lib.fastutil;
 
 
 import it.unimi.dsi.fastutil.io.InspectableFileCachedInputStream;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,9 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import static org.testng.Assert.*;
-import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 public class InspectableFileCachedInputStreamTest
 {

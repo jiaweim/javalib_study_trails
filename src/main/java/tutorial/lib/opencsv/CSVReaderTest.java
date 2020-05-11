@@ -4,10 +4,9 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-import org.testng.internal.junit.ArrayAsserts;
 
 import java.io.*;
 import java.nio.CharBuffer;
@@ -15,17 +14,17 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.charset.Charset;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.notNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.testng.Assert.*;
 
 public class CSVReaderTest
 {
     CSVReader csvr;
 
-    @BeforeClass
+    @BeforeAll
     public void setUp() throws Exception
     {
         StringBuilder sb = new StringBuilder(CSVParser.INITIAL_READ_SIZE);
@@ -468,42 +467,6 @@ public class CSVReaderTest
         assertEquals("ddd\"eee", nextLine[3]);
     }
 
-    @Test(expectedExceptions = UnsupportedOperationException.class)
-    public void quoteAndEscapeMustBeDifferent()
-    {
-        StringBuilder sb = new StringBuilder(CSVParser.INITIAL_READ_SIZE);
-
-        sb.append("a,b,c,ddd\\\"eee\nf,g,h,\"iii,jjj\"");
-
-        new CSVReader(new StringReader(sb.toString()), CSVParser.DEFAULT_SEPARATOR, CSVParser.DEFAULT_QUOTE_CHARACTER,
-                CSVParser.DEFAULT_QUOTE_CHARACTER, CSVReader.DEFAULT_SKIP_LINES, CSVParser.DEFAULT_STRICT_QUOTES,
-                CSVParser.DEFAULT_IGNORE_LEADING_WHITESPACE);
-    }
-
-    @Test(expectedExceptions = UnsupportedOperationException.class)
-    public void separatorAndEscapeMustBeDifferent()
-    {
-        StringBuilder sb = new StringBuilder(CSVParser.INITIAL_READ_SIZE);
-
-        sb.append("a,b,c,ddd\\\"eee\nf,g,h,\"iii,jjj\"");
-
-        new CSVReader(new StringReader(sb.toString()), CSVParser.DEFAULT_SEPARATOR, CSVParser.DEFAULT_QUOTE_CHARACTER,
-                CSVParser.DEFAULT_SEPARATOR, CSVReader.DEFAULT_SKIP_LINES, CSVParser.DEFAULT_STRICT_QUOTES,
-                CSVParser.DEFAULT_IGNORE_LEADING_WHITESPACE);
-    }
-
-    @Test(expectedExceptions = UnsupportedOperationException.class)
-    public void separatorAndQuoteMustBeDifferent()
-    {
-        StringBuilder sb = new StringBuilder(CSVParser.INITIAL_READ_SIZE);
-
-        sb.append("a,b,c,ddd\\\"eee\nf,g,h,\"iii,jjj\"");
-
-        new CSVReader(new StringReader(sb.toString()), CSVParser.DEFAULT_SEPARATOR, CSVParser.DEFAULT_SEPARATOR,
-                CSVParser.DEFAULT_ESCAPE_CHARACTER, CSVReader.DEFAULT_SKIP_LINES, CSVParser.DEFAULT_STRICT_QUOTES,
-                CSVParser.DEFAULT_IGNORE_LEADING_WHITESPACE);
-    }
-
     /**
      * Tests iterating over a reader.
      *
@@ -523,7 +486,7 @@ public class CSVReaderTest
         int idx = 0;
         for (String[] line : csvr) {
             String[] expectedLine = expectedResult[idx++];
-            ArrayAsserts.assertArrayEquals(expectedLine, line);
+            assertArrayEquals(expectedLine, line);
         }
     }
 

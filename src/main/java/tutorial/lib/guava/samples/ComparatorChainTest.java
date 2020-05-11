@@ -2,7 +2,7 @@ package tutorial.lib.guava.samples;
 
 import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.Ordering;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Comparator;

@@ -5,13 +5,12 @@ import it.unimi.dsi.fastutil.ints.AbstractIntComparator;
 import it.unimi.dsi.fastutil.ints.IntComparator;
 import it.unimi.dsi.fastutil.ints.IntHeapSemiIndirectPriorityQueue;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
-
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class IntHeapSemiIndirectPriorityQueueTest
 {

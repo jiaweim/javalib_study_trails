@@ -2,19 +2,20 @@ package tutorial.lib.opencsv;
 
 import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.StringReader;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class ColumnPositionMappingStrategyTest
 {
     private ColumnPositionMappingStrategy<MockBean> strat;
 
-    @BeforeClass
+    @BeforeAll
     public void setUp() throws Exception
     {
         strat = new ColumnPositionMappingStrategy<>();

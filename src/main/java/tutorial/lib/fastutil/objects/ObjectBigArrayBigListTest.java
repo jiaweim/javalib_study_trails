@@ -2,20 +2,21 @@ package tutorial.lib.fastutil.objects;
 
 import it.unimi.dsi.fastutil.BigArrays;
 import it.unimi.dsi.fastutil.objects.*;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @SuppressWarnings("rawtypes")
-public class ObjectBigArrayBigListTest {
+public class ObjectBigArrayBigListTest
+{
 
     @Test
-    void testRemoveAllModifiesCollection() {
+    void testRemoveAllModifiesCollection()
+    {
         ObjectBigList<Integer> list = new ObjectBigArrayBigList<>();
         assertFalse(list.removeAll(Collections.emptySet()));
         assertEquals(ObjectBigLists.EMPTY_BIG_LIST, list);
@@ -23,7 +24,8 @@ public class ObjectBigArrayBigListTest {
 
     @SuppressWarnings("boxing")
     @Test
-    void testRemoveAllSkipSegment() {
+    void testRemoveAllSkipSegment()
+    {
         ObjectBigList<Integer> list = new ObjectBigArrayBigList<Integer>();
         for (long i = 0; i < BigArrays.SEGMENT_SIZE + 10; i++) list.add(Integer.valueOf((int) (i % 2)));
         assertTrue(list.removeAll(ObjectSets.singleton(1)));
@@ -33,7 +35,8 @@ public class ObjectBigArrayBigListTest {
 
     private static java.util.Random r = new java.util.Random(0);
 
-    private static int genKey() {
+    private static int genKey()
+    {
         return r.nextInt();
     }
 
@@ -44,7 +47,8 @@ public class ObjectBigArrayBigListTest {
     private static Object nkt[];
 
     @SuppressWarnings({"boxing"})
-    protected static void testLists(ObjectBigList m, ObjectBigList t, int n, int level) {
+    protected static void testLists(ObjectBigList m, ObjectBigList t, int n, int level)
+    {
         Exception mThrowsOutOfBounds, tThrowsOutOfBounds;
         Object rt = null;
         Object rm = (null);
@@ -117,25 +121,25 @@ public class ObjectBigArrayBigListTest {
             assertTrue(t
                     .contains(aM));
         }
-		/*
-		 * Now we check that inquiries about random data give the same answer in m and t. For m we
-		 * use the polymorphic method.
-		 */
+        /*
+         * Now we check that inquiries about random data give the same answer in m and t. For m we
+         * use the polymorphic method.
+         */
         for (int i = 0; i < n; i++) {
             Object T = genKey();
             assertTrue(m
                     .contains(T) == t.contains((T)));
         }
-		/*
-		 * Again, we check that inquiries about random data give the same answer in m and t, but for
-		 * m we use the standard method.
-		 */
+        /*
+         * Again, we check that inquiries about random data give the same answer in m and t, but for
+         * m we use the standard method.
+         */
         for (int i = 0; i < n; i++) {
             Object T = genKey();
             assertTrue(m
                     .contains((T)) == t.contains((T)));
         }
-		/* Now we add and remove random data in m and t, checking that the result is the same. */
+        /* Now we add and remove random data in m and t, checking that the result is the same. */
         for (int i = 0; i < 2 * n; i++) {
             Object T = genKey();
             try {
@@ -183,10 +187,10 @@ public class ObjectBigArrayBigListTest {
         }
         assertTrue(m.equals(t));
         assertTrue(t.equals(m));
-		/*
-		 * Now we add random data in m and t using addAll on a collection, checking that the result
-		 * is the same.
-		 */
+        /*
+         * Now we add random data in m and t using addAll on a collection, checking that the result
+         * is the same.
+         */
         for (int i = 0; i < n; i++) {
             int p = r.nextInt() % (2 * n + 1);
             java.util.Collection m1 = new java.util.ArrayList();
@@ -214,10 +218,10 @@ public class ObjectBigArrayBigListTest {
             while (t.size() != n)
                 t.remove(t.size() - 1);
         }
-		/*
-		 * Now we add random data in m and t using addAll on a type-specific collection, checking
-		 * that the result is the same.
-		 */
+        /*
+         * Now we add random data in m and t using addAll on a type-specific collection, checking
+         * that the result is the same.
+         */
         for (int i = 0; i < n; i++) {
             int p = r.nextInt() % (2 * n + 1);
             ObjectCollection m1 = new ObjectBigArrayBigList();
@@ -248,10 +252,10 @@ public class ObjectBigArrayBigListTest {
             while (t.size() != n)
                 t.remove(t.size() - 1);
         }
-		/*
-		 * Now we add random data in m and t using addAll on a list, checking that the result is the
-		 * same.
-		 */
+        /*
+         * Now we add random data in m and t using addAll on a list, checking that the result is the
+         * same.
+         */
         for (int i = 0; i < n; i++) {
             int p = r.nextInt() % (2 * n + 1);
             ObjectBigList m1 = new ObjectBigArrayBigList();
@@ -278,7 +282,7 @@ public class ObjectBigArrayBigListTest {
             assertTrue(m.equals(t));
             assertTrue(t.equals(m));
         }
-		/* Now we check that both sets agree on random keys. For m we use the standard method. */
+        /* Now we check that both sets agree on random keys. For m we use the standard method. */
         for (int i = 0; i < n; i++) {
             int p = r.nextInt() % (n * 2);
             mThrowsOutOfBounds = tThrowsOutOfBounds = null;
@@ -295,7 +299,7 @@ public class ObjectBigArrayBigListTest {
             assertTrue(
                     (mThrowsOutOfBounds == null) == (tThrowsOutOfBounds == null));
         }
-		/* Now we inquiry about the content with indexOf()/lastIndexOf(). */
+        /* Now we inquiry about the content with indexOf()/lastIndexOf(). */
         for (int i = 0; i < 10 * n; i++) {
             Object T = genKey();
             assertTrue(m.indexOf((T)) == t.indexOf((T)));
@@ -303,14 +307,14 @@ public class ObjectBigArrayBigListTest {
             assertTrue(m.indexOf(T) == t.indexOf((T)));
             assertTrue(m.lastIndexOf(T) == t.lastIndexOf((T)));
         }
-		/* Now we check cloning. */
+        /* Now we check cloning. */
         if (level == 0) {
             assertTrue(m.equals(((ObjectBigArrayBigList) m)
                     .clone()));
             assertTrue(((ObjectBigArrayBigList) m).clone()
                     .equals(m));
         }
-		/* Now we play with constructors. */
+        /* Now we play with constructors. */
         assertTrue(m.equals(new ObjectBigArrayBigList((ObjectCollection) m)));
         assertTrue((new ObjectBigArrayBigList((ObjectCollection) m)).equals(m));
         assertTrue(m.equals(new ObjectBigArrayBigList(m)));
@@ -320,7 +324,7 @@ public class ObjectBigArrayBigListTest {
         assertTrue(m.equals(new ObjectBigArrayBigList(m.iterator())));
         assertTrue((new ObjectBigArrayBigList(m.iterator())).equals(m));
         int h = m.hashCode();
-		/* Now we save and read m. */
+        /* Now we save and read m. */
         ObjectBigList m2 = null;
         try {
             java.io.File ff = new java.io.File("it.unimi.dsi.fastutil.test");
@@ -338,13 +342,13 @@ public class ObjectBigArrayBigListTest {
             System.exit(1);
         }
         assertTrue(m2.hashCode() == h);
-		/* Now we check that m2 actually holds that data. */
+        /* Now we check that m2 actually holds that data. */
         assertTrue(m2.equals(t));
         assertTrue(t.equals(m2));
-		/* Now we take out of m everything, and check that it is empty. */
+        /* Now we take out of m everything, and check that it is empty. */
         for (Object aT : t) m2.remove(aT);
         assertTrue(m2.isEmpty());
-		/* Now we play with iterators. */
+        /* Now we play with iterators. */
         {
             ObjectBigListIterator i;
             ObjectBigListIterator j;
@@ -435,10 +439,10 @@ public class ObjectBigArrayBigListTest {
                 }
             }
         }
-		/* Now we check that m actually holds that data. */
+        /* Now we check that m actually holds that data. */
         assertTrue(m.equals(t));
         assertTrue(t.equals(m));
-		/* Now we select a pair of keys and create a subset. */
+        /* Now we select a pair of keys and create a subset. */
         if (!m.isEmpty()) {
             int start = r.nextInt(m.size());
             int end = start + r.nextInt(m.size() - start);
@@ -454,7 +458,8 @@ public class ObjectBigArrayBigListTest {
     }
 
     @SuppressWarnings({"unchecked"})
-    protected static void test(int n) {
+    protected static void test(int n)
+    {
         ObjectBigArrayBigList m = new ObjectBigArrayBigList();
         ObjectBigList t = ObjectBigLists.asBigList(new ObjectArrayList());
         k = new Object[n];
@@ -465,39 +470,44 @@ public class ObjectBigArrayBigListTest {
             k[i] = kt[i] = genKey();
             nk[i] = nkt[i] = genKey();
         }
-		/* We add pairs to t. */
+        /* We add pairs to t. */
         for (int i = 0; i < n; i++) t.add(k[i]);
-		/* We add to m the same data */
+        /* We add to m the same data */
         m.addAll(t);
         testLists(m, t, n, 0);
 
         // This tests all reflection-based methods.
         m = ObjectBigArrayBigList.wrap(ObjectBigArrays.EMPTY_BIG_ARRAY);
         t = ObjectBigLists.asBigList(new ObjectArrayList());
-		/* We add pairs to t. */
+        /* We add pairs to t. */
         for (int i = 0; i < n; i++) t.add(k[i]);
-		/* We add to m the same data */
+        /* We add to m the same data */
         m.addAll(t);
         testLists(m, t, n, 0);
     }
 
     @Test
-    void test1() {
+    void test1()
+    {
         test(1);
     }
 
     @Test
-    void test10() {
+    void test10()
+    {
         test(10);
     }
 
     @Test
-    void test100() {
+    void test100()
+    {
         test(100);
     }
 
-    @Test(enabled = false, description = "Too long")
-    void test1000() {
+    @Test
+    @Disabled(value = "Too long")
+    void test1000()
+    {
         test(1000);
     }
 }

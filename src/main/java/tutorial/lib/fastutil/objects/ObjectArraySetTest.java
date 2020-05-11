@@ -4,7 +4,7 @@ import it.unimi.dsi.fastutil.io.BinIO;
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ObjectSet;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -14,20 +14,22 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-
-public class ObjectArraySetTest {
+public class ObjectArraySetTest
+{
 
     @SuppressWarnings("boxing")
-    @Test void testNullInEquals() {
+    @Test
+    void testNullInEquals()
+    {
         assertFalse(new ObjectArraySet<Integer>(Arrays.asList(42)).equals(Collections.singleton(null)));
     }
 
     @SuppressWarnings("boxing")
-    @Test void testSet() {
+    @Test
+    void testSet()
+    {
         for (int i = 0; i <= 1; i++) {
             final ObjectArraySet<Integer> s = i == 0 ? new ObjectArraySet<Integer>() : new ObjectArraySet<Integer>
                     (new Integer[]{0});
@@ -58,7 +60,9 @@ public class ObjectArraySetTest {
     }
 
     @SuppressWarnings("boxing")
-    @Test void testClone() {
+    @Test
+    void testClone()
+    {
         ObjectArraySet<Integer> s = new ObjectArraySet<Integer>();
         assertEquals(s, s.clone());
         s.add(0);
@@ -75,7 +79,8 @@ public class ObjectArraySetTest {
 
     @SuppressWarnings("boxing")
     @Test
-    void testSerialisation() throws IOException, ClassNotFoundException {
+    void testSerialisation() throws IOException, ClassNotFoundException
+    {
         ObjectArraySet<Integer> s = new ObjectArraySet<>();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(baos);
@@ -94,7 +99,9 @@ public class ObjectArraySetTest {
     }
 
     @Test
-    @SuppressWarnings("boxing") void testRemove() {
+    @SuppressWarnings("boxing")
+    void testRemove()
+    {
         ObjectSet<Integer> set = new ObjectArraySet<Integer>(new Integer[]{42});
 
         Iterator<Integer> iterator = set.iterator();

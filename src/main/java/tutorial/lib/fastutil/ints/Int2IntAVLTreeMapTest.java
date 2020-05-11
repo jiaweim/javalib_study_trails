@@ -5,18 +5,19 @@ import com.google.common.collect.Sets;
 import it.unimi.dsi.fastutil.ints.Int2IntAVLTreeMap;
 import it.unimi.dsi.fastutil.ints.IntSortedSet;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.AbstractMap;
 import java.util.Arrays;
 
-import static org.testng.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-
-public class Int2IntAVLTreeMapTest {
+public class Int2IntAVLTreeMapTest
+{
 
     @Test
-    public void testContainsNull() {
+    public void testContainsNull()
+    {
         Int2IntAVLTreeMap m = new Int2IntAVLTreeMap(new int[]{1, 2, 3}, new int[]{1, 2, 3});
         assertFalse(m.containsKey(null));
         assertNull(m.get(null));
@@ -24,14 +25,16 @@ public class Int2IntAVLTreeMapTest {
 
     @SuppressWarnings("boxing")
     @Test
-    public void testEquals() {
+    public void testEquals()
+    {
         Int2IntAVLTreeMap m = new Int2IntAVLTreeMap(new int[]{1, 2}, new int[]{1, 2});
         assertFalse(m.equals(new Object2ObjectOpenHashMap<Integer, Integer>(new Integer[]{1, null}, new Integer[]{1, 1})));
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     @Test
-    public void entrySetContainsTest() {
+    public void entrySetContainsTest()
+    {
         Int2IntAVLTreeMap m = new Int2IntAVLTreeMap();
         m.put(0, 0);
         assertFalse(m.int2IntEntrySet().contains(new AbstractMap.SimpleEntry(new Object(), null)));
@@ -42,7 +45,8 @@ public class Int2IntAVLTreeMapTest {
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     @Test
-    public void entrySetRemoveTest() {
+    public void entrySetRemoveTest()
+    {
         Int2IntAVLTreeMap m = new Int2IntAVLTreeMap();
         m.put(0, 0);
         assertFalse(m.entrySet().remove(new AbstractMap.SimpleEntry(new Object(), null)));
@@ -52,14 +56,16 @@ public class Int2IntAVLTreeMapTest {
     }
 
     @Test
-    public void removeFromKeySetTest() {
+    public void removeFromKeySetTest()
+    {
         Int2IntAVLTreeMap m = new Int2IntAVLTreeMap();
         m.put(0, 0);
         assertTrue(m.keySet().remove(0));
     }
 
     @Test
-    public void testOrder() {
+    public void testOrder()
+    {
         Int2IntAVLTreeMap m = new Int2IntAVLTreeMap();
         m.put(5, 8);
         m.put(1, 2);

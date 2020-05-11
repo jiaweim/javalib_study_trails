@@ -2,24 +2,26 @@ package tutorial.lib.fastutil;
 
 
 import it.unimi.dsi.fastutil.longs.LongArrays;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static org.testng.Assert.assertTrue;
-import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+public class LongArraysTest
+{
 
-public class LongArraysTest {
-
-    private static long[] identity(int n) {
+    private static long[] identity(int n)
+    {
         final long[] a = new long[n];
         while (n-- != 0) a[n] = n;
         return a;
     }
 
     @Test
-    public void testRadixSort1() {
+    public void testRadixSort1()
+    {
         long[] t = {2, 1, 0, 4};
         LongArrays.radixSort(t);
         for (int i = t.length - 1; i-- != 0; ) assertTrue(t[i] <= t[i + 1]);
@@ -52,7 +54,8 @@ public class LongArraysTest {
     }
 
     @Test
-    public void testRadixSort2() {
+    public void testRadixSort2()
+    {
         long[][] d = new long[2][];
 
         d[0] = new long[10];
@@ -60,7 +63,7 @@ public class LongArraysTest {
         d[1] = LongArrays.shuffle(identity(10), new Random(0));
         LongArrays.radixSort(d[0], d[1]);
         for (int i = d[0].length - 1; i-- != 0; )
-            assertTrue( d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
+            assertTrue(d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
 
         d[0] = new long[100000];
         for (int i = d[0].length; i-- != 0; ) d[0][i] = 100 - i % 100;
@@ -85,12 +88,13 @@ public class LongArraysTest {
         for (int i = d.length; i-- != 0; ) d[1][i] = random.nextLong();
         LongArrays.radixSort(d[0], d[1]);
         for (int i = d[0].length - 1; i-- != 0; )
-            assertTrue( d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
+            assertTrue(d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
 
     }
 
     @Test
-    public void testRadixSort() {
+    public void testRadixSort()
+    {
         long[][] t = {{2, 1, 0, 4}};
         LongArrays.radixSort(t);
         for (int i = t[0].length - 1; i-- != 0; ) assertTrue(t[0][i] <= t[0][i + 1]);
@@ -114,7 +118,7 @@ public class LongArraysTest {
         d[1] = LongArrays.shuffle(identity(100000), new Random(6));
         LongArrays.radixSort(d);
         for (int i = d[0].length - 1; i-- != 0; )
-            assertTrue( d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
+            assertTrue(d[0][i] < d[0][i + 1] || d[0][i] == d[0][i + 1] && d[1][i] <= d[1][i + 1]);
 
         d[0] = new long[10];
         Random random = new Random(0);
@@ -138,7 +142,8 @@ public class LongArraysTest {
     }
 
     @Test
-    public void testStabilize() {
+    public void testStabilize()
+    {
         int[] perm;
         long[] val;
 

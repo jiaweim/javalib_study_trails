@@ -7,15 +7,13 @@ import it.unimi.dsi.fastutil.ints.IntIterator;
 import it.unimi.dsi.fastutil.ints.IntListIterator;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Map;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Int2IntLinkedOpenHashMapTest
 {
@@ -146,44 +144,44 @@ public class Int2IntLinkedOpenHashMapTest
         m.putAll(t);
         assertTrue(m.equals(t));
         assertTrue(t.equals(m));
-		/* Now we check that m actually holds that data. */
+        /* Now we check that m actually holds that data. */
         for (java.util.Iterator<?> i = t.entrySet().iterator(); i.hasNext(); ) {
             Map.Entry<?, ?> e = (Map.Entry<?, ?>) i.next();
             assertTrue(valEquals(e.getValue(), m.get(e.getKey())));
         }
-		/* Now we check that m actually holds that data, but iterating on m. */
+        /* Now we check that m actually holds that data, but iterating on m. */
         for (java.util.Iterator<?> i = m.entrySet().iterator(); i.hasNext(); ) {
             Map.Entry<?, ?> e = (Map.Entry<?, ?>) i.next();
             assertTrue(valEquals(e.getValue(), t.get(e.getKey())));
         }
-		/* Now we check that m actually holds the same keys. */
+        /* Now we check that m actually holds the same keys. */
         for (java.util.Iterator<Integer> i = t.keySet().iterator(); i.hasNext(); ) {
             Object o = i.next();
             assertTrue(m.containsKey(o));
             assertTrue(m.keySet().contains(o));
         }
-		/* Now we check that m actually holds the same keys, but iterating on m. */
+        /* Now we check that m actually holds the same keys, but iterating on m. */
         for (java.util.Iterator<?> i = m.keySet().iterator(); i.hasNext(); ) {
             Object o = i.next();
             assertTrue(t.containsKey(o));
             assertTrue(t.keySet().contains(o));
         }
-		/* Now we check that m actually hold the same values. */
+        /* Now we check that m actually hold the same values. */
         for (java.util.Iterator<Integer> i = t.values().iterator(); i.hasNext(); ) {
             Object o = i.next();
             assertTrue(m.containsValue(o));
             assertTrue(m.values().contains(o));
         }
-		/* Now we check that m actually hold the same values, but iterating on m. */
+        /* Now we check that m actually hold the same values, but iterating on m. */
         for (java.util.Iterator<?> i = m.values().iterator(); i.hasNext(); ) {
             Object o = i.next();
             assertTrue(t.containsValue(o));
             assertTrue(t.values().contains(o));
         }
-		/*
-		 * Now we check that inquiries about random data give the same answer in m and t. For m we
-		 * use the polymorphic method.
-		 */
+        /*
+         * Now we check that inquiries about random data give the same answer in m and t. For m we
+         * use the polymorphic method.
+         */
         for (int i = 0; i < n; i++) {
             int T = genKey();
             assertTrue(m.containsKey((Integer.valueOf(T))) == t.containsKey((Integer.valueOf(T))));
@@ -191,15 +189,15 @@ public class Int2IntLinkedOpenHashMapTest
                     (T)))).intValue()))) != (0)) || t.get((Integer.valueOf(T))) != null && !m.get((Integer.valueOf(T))
             ).equals(t.get((Integer.valueOf(T)))));
         }
-		/*
-		 * Again, we check that inquiries about random data give the same answer in m and t, but for
-		 * m we use the standard method.
-		 */
+        /*
+         * Again, we check that inquiries about random data give the same answer in m and t, but for
+         * m we use the standard method.
+         */
         for (int i = 0; i < n; i++) {
             int T = genKey();
             assertTrue(valEquals(m.get((Integer.valueOf(T))), t.get((Integer.valueOf(T)))));
         }
-		/* Now we put and remove random data in m and t, checking that the result is the same. */
+        /* Now we put and remove random data in m and t, checking that the result is the same. */
         for (int i = 0; i < 20 * n; i++) {
             int T = genKey();
             int U = genValue();
@@ -210,42 +208,42 @@ public class Int2IntLinkedOpenHashMapTest
         }
         assertTrue(m.equals(t));
         assertTrue(t.equals(m));
-		/* Now we check that m actually holds the same data. */
+        /* Now we check that m actually holds the same data. */
         for (java.util.Iterator<?> i = t.entrySet().iterator(); i.hasNext(); ) {
             Map.Entry<?, ?> e = (Map.Entry<?, ?>) i.next();
             assertTrue(valEquals(e.getValue(), m.get(e.getKey())));
         }
-		/* Now we check that m actually holds that data, but iterating on m. */
+        /* Now we check that m actually holds that data, but iterating on m. */
         for (java.util.Iterator<?> i = m.entrySet().iterator(); i.hasNext(); ) {
             Map.Entry<?, ?> e = (Map.Entry<?, ?>) i.next();
             assertTrue(valEquals(e.getValue(), t.get(e.getKey())));
         }
-		/* Now we check that m actually holds the same keys. */
+        /* Now we check that m actually holds the same keys. */
         for (java.util.Iterator<Integer> i = t.keySet().iterator(); i.hasNext(); ) {
             Object o = i.next();
             assertTrue(m.containsKey(o));
             assertTrue(m.keySet().contains(o));
         }
-		/* Now we check that m actually holds the same keys, but iterating on m. */
+        /* Now we check that m actually holds the same keys, but iterating on m. */
         for (java.util.Iterator<?> i = m.keySet().iterator(); i.hasNext(); ) {
             Object o = i.next();
             assertTrue(t.containsKey(o));
             assertTrue(t.keySet().contains(o));
         }
-		/* Now we check that m actually hold the same values. */
+        /* Now we check that m actually hold the same values. */
         for (java.util.Iterator<Integer> i = t.values().iterator(); i.hasNext(); ) {
             Object o = i.next();
             assertTrue(m.containsValue(o));
             assertTrue(m.values().contains(o));
         }
-		/* Now we check that m actually hold the same values, but iterating on m. */
+        /* Now we check that m actually hold the same values, but iterating on m. */
         for (java.util.Iterator<?> i = m.values().iterator(); i.hasNext(); ) {
             Object o = i.next();
             assertTrue(t.containsValue(o));
             assertTrue(t.values().contains(o));
         }
         int h = m.hashCode();
-		/* Now we save and read m. */
+        /* Now we save and read m. */
         java.io.File ff = new java.io.File("it.unimi.dsi.fastutil.test");
         java.io.OutputStream os = new java.io.FileOutputStream(ff);
         java.io.ObjectOutputStream oos = new java.io.ObjectOutputStream(os);
@@ -259,12 +257,12 @@ public class Int2IntLinkedOpenHashMapTest
         assertEquals(h, m.hashCode());
 
         assertEquals(m, m.clone());
-		/* Now we check that m actually holds that data. */
+        /* Now we check that m actually holds that data. */
         for (java.util.Iterator<Integer> i = t.keySet().iterator(); i.hasNext(); ) {
             Object o = i.next();
             assertTrue(valEquals(m.get(o), t.get(o)));
         }
-		/* Now we put and remove random data in m and t, checking that the result is the same. */
+        /* Now we put and remove random data in m and t, checking that the result is the same. */
         for (int i = 0; i < 20 * n; i++) {
             int T = genKey();
             int U = genValue();
@@ -275,7 +273,7 @@ public class Int2IntLinkedOpenHashMapTest
         }
         assertTrue(m.equals(t));
         assertTrue(t.equals(m));
-		/* Now we play with iterators. */
+        /* Now we play with iterators. */
         {
             java.util.ListIterator<?> i, j;
             Object J = null;
@@ -352,16 +350,16 @@ public class Int2IntLinkedOpenHashMapTest
                         .previousIndex() == j.previousIndex());
             }
         }
-		/* Now we check that m actually holds that data. */
+        /* Now we check that m actually holds that data. */
         assertTrue(m.equals(t));
         assertTrue(t.equals(m));
-		/* Now we take out of m everything, and check that it is empty. */
+        /* Now we take out of m everything, and check that it is empty. */
         for (java.util.Iterator<Integer> i = t.keySet().iterator(); i.hasNext(); )
             m.remove(i.next());
         assertTrue(m.isEmpty());
-		/*
-		 * Now we check that the iteration order of m is properly affected, using random movements
-		 */
+        /*
+         * Now we check that the iteration order of m is properly affected, using random movements
+         */
         {
             m.clear();
             final java.util.Deque<Integer> d = new java.util.ArrayDeque<Integer>();
@@ -420,7 +418,8 @@ public class Int2IntLinkedOpenHashMapTest
         test(100, Hash.VERY_FAST_LOAD_FACTOR);
     }
 
-    @Test(enabled = false, description = "Too long")
+    @Test
+    @Disabled(value = "Too long")
     public void test1000() throws IOException, ClassNotFoundException
     {
         test(1000, Hash.DEFAULT_LOAD_FACTOR);

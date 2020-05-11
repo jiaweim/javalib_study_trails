@@ -4,19 +4,21 @@ import it.unimi.dsi.fastutil.io.BinIO;
 import it.unimi.dsi.fastutil.objects.ObjectArrayPriorityQueue;
 import it.unimi.dsi.fastutil.objects.ObjectComparators;
 import it.unimi.dsi.fastutil.objects.ObjectHeapPriorityQueue;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @SuppressWarnings({"boxing", "unchecked"})
-public class ObjectArrayPriorityQueueTest {
+public class ObjectArrayPriorityQueueTest
+{
 
     @Test
-    void testEnqueueDequeue() {
+    void testEnqueueDequeue()
+    {
         ObjectArrayPriorityQueue<Integer> q = new ObjectArrayPriorityQueue<Integer>();
         ObjectHeapPriorityQueue<Integer> h = new ObjectHeapPriorityQueue<Integer>();
         for (int i = 0; i < 100; i++) {
@@ -53,11 +55,12 @@ public class ObjectArrayPriorityQueueTest {
 
 
     @Test
-    void testEnqueueDequeueComp() {
+    void testEnqueueDequeueComp()
+    {
         ObjectArrayPriorityQueue<Integer> q = new ObjectArrayPriorityQueue<Integer>(ObjectComparators
                 .OPPOSITE_COMPARATOR);
         ObjectHeapPriorityQueue<Integer> h = new ObjectHeapPriorityQueue<Integer>(ObjectComparators
-				.OPPOSITE_COMPARATOR);
+                .OPPOSITE_COMPARATOR);
         for (int i = 0; i < 100; i++) {
             q.enqueue(i);
             h.enqueue(i);
@@ -91,7 +94,8 @@ public class ObjectArrayPriorityQueueTest {
     }
 
     @Test
-    void testMix() {
+    void testMix()
+    {
         ObjectArrayPriorityQueue<Integer> q = new ObjectArrayPriorityQueue<Integer>();
         ObjectHeapPriorityQueue<Integer> h = new ObjectHeapPriorityQueue<Integer>();
         for (int i = 0; i < 200; i++) {
@@ -125,11 +129,12 @@ public class ObjectArrayPriorityQueueTest {
     }
 
     @Test
-    void testMixComp() {
+    void testMixComp()
+    {
         ObjectArrayPriorityQueue<Integer> q = new ObjectArrayPriorityQueue<Integer>(ObjectComparators
-				.OPPOSITE_COMPARATOR);
+                .OPPOSITE_COMPARATOR);
         ObjectHeapPriorityQueue<Integer> h = new ObjectHeapPriorityQueue<Integer>(ObjectComparators
-				.OPPOSITE_COMPARATOR);
+                .OPPOSITE_COMPARATOR);
         for (int i = 0; i < 200; i++) {
             for (int j = 0; j < 20; j++) {
                 q.enqueue(j + i * 20);
@@ -161,7 +166,8 @@ public class ObjectArrayPriorityQueueTest {
     }
 
     @Test
-    void testSerialize() throws IOException, ClassNotFoundException {
+    void testSerialize() throws IOException, ClassNotFoundException
+    {
         ObjectArrayPriorityQueue<Integer> q = new ObjectArrayPriorityQueue<Integer>();
         for (int i = 0; i < 100; i++) q.enqueue(i);
 

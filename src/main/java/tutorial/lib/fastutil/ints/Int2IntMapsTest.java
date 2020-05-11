@@ -2,19 +2,20 @@ package tutorial.lib.fastutil.ints;
 
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntMaps;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 
-public class Int2IntMapsTest {
-
+public class Int2IntMapsTest
+{
     @SuppressWarnings("boxing")
     @Test
-    void testSingletonMapEqualsShouldCheckTheTypeOfParamters() {
+    void testSingletonMapEqualsShouldCheckTheTypeOfParamters()
+    {
         Int2IntMap map = Int2IntMaps.singleton(1, 2);
         assertFalse(map.equals(Collections.singletonMap(null, 2)));
         assertFalse(map.equals(Collections.singletonMap(1, null)));
@@ -23,7 +24,8 @@ public class Int2IntMapsTest {
     }
 
     @Test
-    void testToArrayShouldNullElementAfterLastEntry() {
+    void testToArrayShouldNullElementAfterLastEntry()
+    {
         Int2IntMap map = Int2IntMaps.EMPTY_MAP;
         Object[] values = new Object[]{"test"};
         map.entrySet().toArray(values);

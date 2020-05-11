@@ -1,24 +1,24 @@
 package tutorial.jackson.annotation;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 /**
  * @author JiaweiMao
  * @version 1.0.0
  * @since 09 Oct 2018, 2:28 PM
  */
-public class AnnotationTest
+class AnnotationTest
 {
     @Test
-    public void whenSerializingUsingJsonAnyGetter_thenCorrect() throws JsonProcessingException
+    void whenSerializingUsingJsonAnyGetter_thenCorrect() throws JsonProcessingException
     {
         ExtendableBean bean = new ExtendableBean("My bean");
         bean.add("attr1", "val1");
@@ -33,8 +33,7 @@ public class AnnotationTest
     }
 
     @Test
-    public void whenSerializingUsingJsonGetter_thenCorrect()
-            throws JsonProcessingException
+    void whenSerializingUsingJsonGetter_thenCorrect() throws JsonProcessingException
     {
         MyBean bean = new MyBean(1, "My bean");
 
@@ -46,10 +45,9 @@ public class AnnotationTest
     }
 
     @Test
-    public void whenSerializingUsingJsonPropertyOrder_thenCorrect()
+    void whenSerializingUsingJsonPropertyOrder_thenCorrect()
             throws JsonProcessingException
     {
-
         MyBean2 bean = new MyBean2(1, "My bean");
 
         String result = new ObjectMapper().writeValueAsString(bean);
@@ -57,7 +55,7 @@ public class AnnotationTest
     }
 
     @Test
-    public void whenSerializingUsingJsonRawValue_thenCorrect()
+    void whenSerializingUsingJsonRawValue_thenCorrect()
             throws JsonProcessingException
     {
         RawBean bean = new RawBean("My bean", "{\"attr\":false}");
@@ -66,7 +64,7 @@ public class AnnotationTest
     }
 
     @Test
-    public void whenSerializingUsingJsonValue_thenCorrect()
+    void whenSerializingUsingJsonValue_thenCorrect()
             throws IOException
     {
         String enumAsString = new ObjectMapper().writeValueAsString(TypeEnumWithValue.TYPE1);

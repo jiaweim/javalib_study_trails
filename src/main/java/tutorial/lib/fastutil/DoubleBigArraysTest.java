@@ -3,29 +3,29 @@ package tutorial.lib.fastutil;
 import it.unimi.dsi.fastutil.doubles.DoubleArrays;
 import it.unimi.dsi.fastutil.doubles.DoubleBigArrays;
 import it.unimi.dsi.fastutil.doubles.DoubleComparators;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Random;
 
 import static it.unimi.dsi.fastutil.doubles.DoubleBigArrays.get;
 import static it.unimi.dsi.fastutil.doubles.DoubleBigArrays.set;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class DoubleBigArraysTest {
+public class DoubleBigArraysTest
+{
 
 
-    public static double[][] identity(final int n) {
+    public static double[][] identity(final int n)
+    {
         final double[][] perm = DoubleBigArrays.newBigArray(n);
         for (int i = n; i-- != 0; ) DoubleBigArrays.set(perm, i, i);
         return perm;
     }
 
     @Test
-    public void testQuickSort() {
+    public void testQuickSort()
+    {
         double[] s = new double[]{2, 1, 5, 2, 1, 0, 9, 1, 4, 2, 4, 6, 8, 9, 10, 12, 1, 7};
 
         Arrays.sort(s);
@@ -49,7 +49,8 @@ public class DoubleBigArraysTest {
 
     }
 
-    private void testCopy(int n) {
+    private void testCopy(int n)
+    {
         double[][] a = DoubleBigArrays.newBigArray(n);
         for (int i = 0; i < n; i++) set(a, i, i);
         DoubleBigArrays.copy(a, 0, a, 1, n - 2);
@@ -65,22 +66,26 @@ public class DoubleBigArraysTest {
     }
 
     @Test
-    public void testCopy10() {
+    public void testCopy10()
+    {
         testCopy(10);
     }
 
     @Test
-    public void testCopy1000() {
+    public void testCopy1000()
+    {
         testCopy(1000);
     }
 
     @Test
-    public void testCopy1000000() {
+    public void testCopy1000000()
+    {
         testCopy(1000000);
     }
 
     @Test
-    public void testBinarySearch() {
+    public void testBinarySearch()
+    {
         double[] a = new double[]{25, 32, 1, 3, 2, 0, 40, 7, 13, 12, 11, 10, -1, -6, -18, 2000};
 
         Arrays.sort(a);
@@ -95,12 +100,13 @@ public class DoubleBigArraysTest {
         for (int i = -1; i < 20; i++) {
             assertEquals(Arrays.binarySearch(a, 5, 13, i), DoubleBigArrays.binarySearch(b, 5, 13, i));
             assertEquals(Arrays.binarySearch(a, 5, 13, i), DoubleBigArrays.binarySearch(b, 5, 13, i,
-					DoubleComparators.NATURAL_COMPARATOR));
+                    DoubleComparators.NATURAL_COMPARATOR));
         }
     }
 
     @Test
-    public void testTrim() {
+    public void testTrim()
+    {
         double[] a = new double[]{2, 1, 5, 2, 1, 0, 9, 1, 4, 2, 4, 6, 8, 9, 10, 12, 1, 7};
         double[][] b = DoubleBigArrays.wrap(a.clone());
 
@@ -114,7 +120,8 @@ public class DoubleBigArraysTest {
     }
 
     @Test
-    public void testEquals() {
+    public void testEquals()
+    {
         double[] a = new double[]{2, 1, 5, 2, 1, 0, 9, 1, 4, 2, 4, 6, 8, 9, 10, 12, 1, 7};
         double[][] b = DoubleBigArrays.wrap(a.clone());
         double[][] c = DoubleBigArrays.wrap(a.clone());
@@ -125,7 +132,8 @@ public class DoubleBigArraysTest {
     }
 
     @Test
-    public void testRadixSort1() {
+    public void testRadixSort1()
+    {
         double[][] t = DoubleBigArrays.wrap(new double[]{2, 1, 0, 4});
         DoubleBigArrays.radixSort(t);
         for (long i = DoubleBigArrays.length(t) - 1; i-- != 0; )
@@ -167,25 +175,26 @@ public class DoubleBigArraysTest {
     }
 
     @Test
-    public void testRadixSort2() {
+    public void testRadixSort2()
+    {
         double d[][], e[][];
         d = DoubleBigArrays.newBigArray(10);
         for (long i = DoubleBigArrays.length(d); i-- != 0; ) DoubleBigArrays.set(d, i, (int) (3 - i % 3));
         e = DoubleBigArrays.shuffle(identity(10), new Random(0));
         DoubleBigArrays.radixSort(d, e);
         for (long i = DoubleBigArrays.length(d) - 1; i-- != 0; )
-            assertTrue( DoubleBigArrays
-					.get(d, i) < DoubleBigArrays.get(d, i + 1) || DoubleBigArrays.get(d, i) == DoubleBigArrays.get(d,
-					i + 1) && DoubleBigArrays.get(e, i) <= DoubleBigArrays.get(e, i + 1));
+            assertTrue(DoubleBigArrays
+                    .get(d, i) < DoubleBigArrays.get(d, i + 1) || DoubleBigArrays.get(d, i) == DoubleBigArrays.get(d,
+                    i + 1) && DoubleBigArrays.get(e, i) <= DoubleBigArrays.get(e, i + 1));
 
         d = DoubleBigArrays.newBigArray(100000);
         for (long i = DoubleBigArrays.length(d); i-- != 0; ) DoubleBigArrays.set(d, i, (int) (100 - i % 100));
         e = DoubleBigArrays.shuffle(identity(100000), new Random(6));
         DoubleBigArrays.radixSort(d, e);
         for (long i = DoubleBigArrays.length(d) - 1; i-- != 0; )
-            assertTrue( DoubleBigArrays
-					.get(d, i) < DoubleBigArrays.get(d, i + 1) || DoubleBigArrays.get(d, i) == DoubleBigArrays.get(d,
-					i + 1) && DoubleBigArrays.get(e, i) <= DoubleBigArrays.get(e, i + 1));
+            assertTrue(DoubleBigArrays
+                    .get(d, i) < DoubleBigArrays.get(d, i + 1) || DoubleBigArrays.get(d, i) == DoubleBigArrays.get(d,
+                    i + 1) && DoubleBigArrays.get(e, i) <= DoubleBigArrays.get(e, i + 1));
 
         d = DoubleBigArrays.newBigArray(10);
         for (long i = DoubleBigArrays.length(d); i-- != 0; ) DoubleBigArrays.set(d, i, (int) (i % 3 - 2));
@@ -194,9 +203,9 @@ public class DoubleBigArraysTest {
         for (long i = DoubleBigArrays.length(d); i-- != 0; ) DoubleBigArrays.set(e, i, random.nextInt());
         DoubleBigArrays.radixSort(d, e);
         for (long i = DoubleBigArrays.length(d) - 1; i-- != 0; )
-            assertTrue( DoubleBigArrays
-					.get(d, i) < DoubleBigArrays.get(d, i + 1) || DoubleBigArrays.get(d, i) == DoubleBigArrays.get(d,
-					i + 1) && DoubleBigArrays.get(e, i) <= DoubleBigArrays.get(e, i + 1));
+            assertTrue(DoubleBigArrays
+                    .get(d, i) < DoubleBigArrays.get(d, i + 1) || DoubleBigArrays.get(d, i) == DoubleBigArrays.get(d,
+                    i + 1) && DoubleBigArrays.get(e, i) <= DoubleBigArrays.get(e, i + 1));
 
         d = DoubleBigArrays.newBigArray(100000);
         random = new Random(0);
@@ -205,15 +214,15 @@ public class DoubleBigArraysTest {
         for (long i = DoubleBigArrays.length(d); i-- != 0; ) DoubleBigArrays.set(e, i, random.nextInt());
         DoubleBigArrays.radixSort(d, e);
         for (long i = DoubleBigArrays.length(d) - 1; i-- != 0; )
-            assertTrue( DoubleBigArrays
-					.get(d, i) < DoubleBigArrays.get(d, i + 1) || DoubleBigArrays.get(d, i) == DoubleBigArrays.get(d,
-					i + 1) && DoubleBigArrays.get(e, i) <= DoubleBigArrays.get(e, i + 1));
+            assertTrue(DoubleBigArrays
+                    .get(d, i) < DoubleBigArrays.get(d, i + 1) || DoubleBigArrays.get(d, i) == DoubleBigArrays.get(d,
+                    i + 1) && DoubleBigArrays.get(e, i) <= DoubleBigArrays.get(e, i + 1));
         for (long i = 100; i-- != 10; ) DoubleBigArrays.set(e, i, random.nextInt());
         DoubleBigArrays.radixSort(d, e, 10, 100);
         for (long i = 99; i-- != 10; )
-            assertTrue( DoubleBigArrays
-					.get(d, i) < DoubleBigArrays.get(d, i + 1) || DoubleBigArrays.get(d, i) == DoubleBigArrays.get(d,
-					i + 1) && DoubleBigArrays.get(e, i) <= DoubleBigArrays.get(e, i + 1));
+            assertTrue(DoubleBigArrays
+                    .get(d, i) < DoubleBigArrays.get(d, i + 1) || DoubleBigArrays.get(d, i) == DoubleBigArrays.get(d,
+                    i + 1) && DoubleBigArrays.get(e, i) <= DoubleBigArrays.get(e, i + 1));
 
         d = DoubleBigArrays.newBigArray(1000000);
         random = new Random(0);
@@ -222,14 +231,15 @@ public class DoubleBigArraysTest {
         for (long i = DoubleBigArrays.length(d); i-- != 0; ) DoubleBigArrays.set(e, i, random.nextInt());
         DoubleBigArrays.radixSort(d, e);
         for (long i = DoubleBigArrays.length(d) - 1; i-- != 0; )
-            assertTrue( DoubleBigArrays
-					.get(d, i) < DoubleBigArrays.get(d, i + 1) || DoubleBigArrays.get(d, i) == DoubleBigArrays.get(d,
-					i + 1) && DoubleBigArrays.get(e, i) <= DoubleBigArrays.get(e, i + 1));
+            assertTrue(DoubleBigArrays
+                    .get(d, i) < DoubleBigArrays.get(d, i + 1) || DoubleBigArrays.get(d, i) == DoubleBigArrays.get(d,
+                    i + 1) && DoubleBigArrays.get(e, i) <= DoubleBigArrays.get(e, i + 1));
     }
 
 
     @Test
-    public void testShuffle() {
+    public void testShuffle()
+    {
         double[] a = new double[100];
         for (int i = a.length; i-- != 0; ) a[i] = i;
         double[][] b = DoubleBigArrays.wrap(a);
@@ -242,7 +252,8 @@ public class DoubleBigArraysTest {
     }
 
     @Test
-    public void testShuffleFragment() {
+    public void testShuffleFragment()
+    {
         double[] a = new double[100];
         for (int i = a.length; i-- != 0; ) a[i] = -1;
         for (int i = 10; i < 30; i++) a[i] = i - 10;
@@ -256,13 +267,15 @@ public class DoubleBigArraysTest {
     }
 
     @Test
-    public void testBinarySearchLargeKey() {
+    public void testBinarySearchLargeKey()
+    {
         final double[][] a = DoubleBigArrays.wrap(new double[]{1, 2, 3});
         DoubleBigArrays.binarySearch(a, 4);
     }
 
     @Test
-    public void testMergeSortNaNs() {
+    public void testMergeSortNaNs()
+    {
         final double[] t = {Double.NaN, 1, 5, 2, 1, 0, 9, 1, Double.NaN, 2, 4, 6, 8, 9, 10, 12, 1, 7};
         for (int to = 1; to < t.length; to++)
             for (int from = 0; from < to; from++) {
@@ -275,7 +288,8 @@ public class DoubleBigArraysTest {
 
 
     @Test
-    public void testRadixSortNaNs() {
+    public void testRadixSortNaNs()
+    {
         final double[] t = {Double.NaN, 1, 5, 2, 1, 0, 9, 1, Double.NaN, 2, 4, 6, 8, 9, 10, 12, 1, 7};
         for (int to = 1; to < t.length; to++)
             for (int from = 0; from < to; from++) {
@@ -287,7 +301,8 @@ public class DoubleBigArraysTest {
     }
 
     @Test
-    public void testRadixSort2NaNs() {
+    public void testRadixSort2NaNs()
+    {
         final double[] t = {Double.NaN, 1, 5, 2, 1, 0, 9, 1, Double.NaN, 2, 4, 6, 8, 9, 10, 12, 1, 7};
         for (int to = 1; to < t.length; to++)
             for (int from = 0; from < to; from++) {
@@ -303,7 +318,8 @@ public class DoubleBigArraysTest {
     }
 
     @Test
-    public void testQuickSortNaNs() {
+    public void testQuickSortNaNs()
+    {
         final double[] t = {Double.NaN, 1, 5, 2, 1, 0, 9, 1, Double.NaN, 2, 4, 6, 8, 9, 10, 12, 1, 7};
         for (int to = 1; to < t.length; to++)
             for (int from = 0; from < to; from++) {

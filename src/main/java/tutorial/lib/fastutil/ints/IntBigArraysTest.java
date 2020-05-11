@@ -2,22 +2,17 @@ package tutorial.lib.fastutil.ints;
 
 import it.unimi.dsi.fastutil.ints.IntBigArrays;
 import it.unimi.dsi.fastutil.ints.IntComparators;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Random;
 
 import static it.unimi.dsi.fastutil.ints.IntBigArrays.get;
 import static it.unimi.dsi.fastutil.ints.IntBigArrays.set;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class IntBigArraysTest
 {
-
-
     public static int[][] identity(final int n)
     {
         final int[][] perm = IntBigArrays.newBigArray(n);

@@ -1,16 +1,15 @@
 package tutorial.lib.fastutil;
 
 import it.unimi.dsi.fastutil.bytes.ByteArrays;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class ByteArraysTest
 {
-
     private static byte[] castIdentity(int n)
     {
         final byte[] a = new byte[n];

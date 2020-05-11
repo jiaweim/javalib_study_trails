@@ -2,14 +2,17 @@ package tutorial.lib.fastutil.objects;
 
 
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AbstractObject2IntFunctionTest {
+
+public class AbstractObject2IntFunctionTest
+{
 
     @Test
-    void testRemove() {
+    void testRemove()
+    {
         final Object2IntArrayMap<Object> a = new Object2IntArrayMap<>();
         final Object key = new Object();
         a.put(key, 1);

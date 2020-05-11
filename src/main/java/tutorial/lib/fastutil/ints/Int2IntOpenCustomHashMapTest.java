@@ -2,67 +2,75 @@ package tutorial.lib.fastutil.ints;
 
 import it.unimi.dsi.fastutil.ints.Int2IntOpenCustomHashMap;
 import it.unimi.dsi.fastutil.ints.IntHash;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.Serializable;
 import java.util.Map.Entry;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @SuppressWarnings("rawtypes")
 
 /** Not a particularly good test, but it will check that we use everywhere the same hashing strategy. */
 
-public class Int2IntOpenCustomHashMapTest {
+public class Int2IntOpenCustomHashMapTest
+{
+    @Test
+    public void testGetNullKey()
+    {
+        final Int2IntOpenCustomHashMap s = new Int2IntOpenCustomHashMap(new IntHash.Strategy()
+        {
 
-	@Test
-	public void testGetNullKey() {
-		final Int2IntOpenCustomHashMap s = new Int2IntOpenCustomHashMap(new IntHash.Strategy() {
+            @Override
+            public int hashCode(int o)
+            {
+                return o % 10;
+            }
 
-			@Override
-			public int hashCode( int o ) {
-				return o % 10;
-			}
+            @Override
+            public boolean equals(int a, int b)
+            {
+                return (a - b) % 10 == 0;
+            }
+        });
 
-			@Override
-			public boolean equals( int a, int b ) {
-				return ( a - b ) % 10 == 0;
-			}
-		} );
-
-		s.put( 10, 10 );
-		assertTrue( s.containsKey( 0 ) );
-		Entry<Integer, Integer> e = s.entrySet().iterator().next();
-		assertEquals( 10, e.getKey().intValue() );
-		assertEquals( 10, e.getValue().intValue() );
-		s.remove( 0 );
-		assertTrue( s.isEmpty() );
-	}
+        s.put(10, 10);
+        assertTrue(s.containsKey(0));
+        Entry<Integer, Integer> e = s.entrySet().iterator().next();
+        assertEquals(10, e.getKey().intValue());
+        assertEquals(10, e.getValue().intValue());
+        s.remove(0);
+        assertTrue(s.isEmpty());
+    }
 
 
-	private static final class Strategy implements IntHash.Strategy, Serializable {
-		private static final long serialVersionUID = 1L;
+    private static final class Strategy implements IntHash.Strategy, Serializable
+    {
+        private static final long serialVersionUID = 1L;
 
-		@Override
-		public int hashCode( int e ) {
-			return Integer.reverse( e );
-		}
+        @Override
+        public int hashCode(int e)
+        {
+            return Integer.reverse(e);
+        }
 
-		@Override
-		public boolean equals( int a, int b ) {
-			return a == b;
-		}
-	}
+        @Override
+        public boolean equals(int a, int b)
+        {
+            return a == b;
+        }
+    }
 
-	private final static Strategy strategy = new Strategy();
-	
-	private static java.util.Random r = new java.util.Random( 0 );
+    private final static Strategy strategy = new Strategy();
 
-	private static int genKey() {
-		return r.nextInt( 10 );
-	}
+    private static java.util.Random r = new java.util.Random(0);
+
+    private static int genKey()
+    {
+        return r.nextInt(10);
+    }
 //
 //	@SuppressWarnings("boxing")
 //	private static void checkTable( Int2IntOpenCustomHashMap s ) {
