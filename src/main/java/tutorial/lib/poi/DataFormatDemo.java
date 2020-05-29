@@ -31,7 +31,7 @@ public class DataFormatDemo
         cell.setCellValue(11111.25);
 
         style = wb.createCellStyle();
-        style.setDataFormat(format.getFormat("0.0"));
+        style.setDataFormat(format.getFormat("0.000"));
         cell.setCellStyle(style);
         row = sheet.createRow(rowNum++);
         cell = row.createCell(colNum);
