@@ -18,6 +18,7 @@
         <module>libsvm</module>
         <module>mockito</module>
         <module>gson</module>
+        <module>itext</module>
     </modules>
 
     <dependencies>

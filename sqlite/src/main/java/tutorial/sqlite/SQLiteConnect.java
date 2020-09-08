@@ -1,6 +1,6 @@
 package tutorial.sqlite;
 
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

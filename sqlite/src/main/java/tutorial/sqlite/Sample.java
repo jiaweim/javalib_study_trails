@@ -9,7 +9,7 @@ import java.sql.*;
  */
 public class Sample
 {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException
+    public static void main(String[] args) throws SQLException
     {
         Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
         Statement statement = connection.createStatement();

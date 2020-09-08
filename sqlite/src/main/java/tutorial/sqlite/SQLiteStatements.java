@@ -1,12 +1,12 @@
 package tutorial.sqlite;
 
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.net.URL;
 import java.sql.*;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author JiaweiMao
@@ -15,11 +15,10 @@ import static org.testng.Assert.assertEquals;
  */
 public class SQLiteStatements
 {
-
     private static Connection conn;
 
-    @BeforeClass
-    public static void setUp() throws SQLException
+    @BeforeAll
+    static void setUp() throws SQLException
     {
         URL resource = SQLiteStatements.class.getClassLoader().getResource("chinook.db");
         String url = "jdbc:sqlite:" + resource.getFile();
@@ -27,7 +26,8 @@ public class SQLiteStatements
 
         DatabaseMetaData metaData = conn.getMetaData();
         assertEquals(metaData.getDriverName(), "SQLite JDBC");
-        assertEquals(metaData.getDriverVersion(), "3.27.2.1");
+        System.out.println(metaData.getDriverVersion());
+        assertEquals(metaData.getDriverVersion(), "3.31.1");
     }
 
     @Test
@@ -45,7 +45,7 @@ public class SQLiteStatements
     @Test
     public void testINSERT() throws SQLException
     {
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:");
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:D:\\code\\test\\test.db");
 
         String tableSql = "CREATE TABLE IF NOT EXISTS warehouses (id integer PRIMARY KEY, name text NOT NULL, capacity real)";
         Statement stmt = conn.createStatement();
